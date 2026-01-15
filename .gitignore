@@ -1,0 +1,11 @@
+mr_dork_data.db
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.env
+.venv
+env/
+venv/
