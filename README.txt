@@ -28,5 +28,6 @@ git clone https://github.com/tc4dy/MrDork
 
 cd MrDork
 
-python dork.py or dork_tr.py
+python dork.py or dork-tr.py
+
 
