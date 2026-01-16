@@ -21,3 +21,12 @@ Eğitim ve Araştırma: Aracın temel amacı siber güvenlik farkındalığını
 
 
 Kötüye Kullanım: Bu aracın yasa dışı faaliyetlerde kullanılması durumunda tüm hukuki sorumluluk kullanıcıya aittir. Geliştirici (Tc4dy), oluşabilecek hiçbir zarardan veya yasal ihlalden sorumlu tutulamaz. Unutmayın: Gerçek bir hacker, bilgisini zarar vermek için değil, sistemleri daha güvenli hale getirmek için kullanır.
+
+USAGE | KULLANIM 💎
+
+git clone https://github.com/tc4dy/MrDork
+
+cd MrDork
+
+python dork.py or dork_tr.py
+
