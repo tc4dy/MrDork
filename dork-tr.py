@@ -3,7 +3,7 @@
 """
 ╔══════════════════════════════════════════════════════════════════════════════
 ║                          🔥 MR. DORK ULTIMATE 🔥                             
-║                   Dünyanın En Gelişmiş Dork Arama Motoru                    
+║                        Gelişmiş Dork Arama Motoru                    
 ║                                                                              
 ║  Geliştirici: @tc4dy                                                  
 ║  Versiyon: 3.0 ULTIMATE EDITION                                              
@@ -733,3 +733,4 @@ if __name__ == "__main__":
         print(f"\n{Colors.ERROR}İşlem kullanıcı tarafından durduruldu.{Colors.RESET}")
 
         sys.exit()
+
