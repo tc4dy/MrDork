@@ -5,7 +5,7 @@
 ║                          🔥 MR. DORK ULTIMATE 🔥                             
 ║                   Dünyanın En Gelişmiş Dork Arama Motoru                    
 ║                                                                              
-║  Geliştirici: Tc4dy - Tuğra                                                 
+║  Geliştirici: @tc4dy                                                  
 ║  Versiyon: 3.0 ULTIMATE EDITION                                              
 ║  Açıklama: İhtiyacınız olabilcek tüm kategorilerde Google Dork ile Supreme Güç!               
 ╚══════════════════════════════════════════════════════════════════════════════
@@ -731,4 +731,5 @@ if __name__ == "__main__":
         app.main_menu()
     except KeyboardInterrupt:
         print(f"\n{Colors.ERROR}İşlem kullanıcı tarafından durduruldu.{Colors.RESET}")
+
         sys.exit()
