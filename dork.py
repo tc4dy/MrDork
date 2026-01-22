@@ -3,9 +3,9 @@
 """
 ╔══════════════════════════════════════════════════════════════════════════════
 ║                          🔥 MR. DORK ULTIMATE 🔥                             
-║                   The World's Most Advanced Dork Search Engine               
+║                       The Advanced Dork Search Engine               
 ║                                                                              
-║  Developer: Tc4dy - Tuğra                                                   
+║  Developer: @tc4dy                                                   
 ║  Version: 3.0 ULTIMATE EDITION                                              
 ║  Description: Supreme power with Google Dorks across all categories you might need!      
 ╚══════════════════════════════════════════════════════════════════════════════
@@ -731,4 +731,5 @@ if __name__ == "__main__":
         app.main_menu()
     except KeyboardInterrupt:
         print(f"\n{Colors.ERROR}Process terminated by user.{Colors.RESET}")
+
         sys.exit()
