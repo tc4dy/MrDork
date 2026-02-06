@@ -478,7 +478,7 @@ _)      \\.___.,|     .'
 ║                          🔥 MR. DORK ULTIMATE 🔥                             
 ║                   The World's Most Advanced Dork Search Engine               
 ║                                                                              
-║  Developer: Tc4dy - Tuğra                                                   
+║  Developer: Tc4dy                                                   
 ║  Version: 3.0 ULTIMATE EDITION                                              
 ║  Total Dorks: {str(DorkDatabase.get_total_dorks()).ljust(5)} Google Dorks                                        
 ║  Categories: {str(len(DorkDatabase.CATEGORIES)).ljust(3)}                                                         
