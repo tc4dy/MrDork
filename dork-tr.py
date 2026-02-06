@@ -478,7 +478,7 @@ _)      \\.___.,|     .'
 ║                          🔥 MR. DORK ULTIMATE 🔥                             
 ║                   Dünyanın En Gelişmiş Dork Arama Motoru                    
 ║                                                                              
-║  Geliştirici: Tc4dy - Tuğra                                                 
+║  Geliştirici: Tc4dy                                                  
 ║  Versiyon: 3.0 ULTIMATE EDITION                                              
 ║  Toplam Dork: {str(DorkDatabase.get_total_dorks()).ljust(5)} Google Dork                                         
 ║  Kategori: {str(len(DorkDatabase.CATEGORIES)).ljust(3)}                                                          
