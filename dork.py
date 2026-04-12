@@ -1,12 +1,11 @@
-#Tool Owner - @tc4dy
-#Premium Edition for Contact. (50+ Categories)
+#Tool Owner - @tc4dy | github.com/tc4dy
 """
 ╔══════════════════════════════════════════════════════════════════════════════
 ║                          🔥 MR. DORK ULTIMATE 🔥                             
 ║                       The Advanced Dork Search Engine               
 ║                                                                              
 ║  Developer: @tc4dy                                                   
-║  Version: 3.0 ULTIMATE EDITION                                              
+║  Version: 3.0                                              
 ║  Description: Supreme power with Google Dorks across all categories you might need!      
 ╚══════════════════════════════════════════════════════════════════════════════
 """
@@ -16,6 +15,7 @@ import sys
 import json
 import webbrowser
 import urllib.parse
+import subprocess
 from datetime import datetime
 from pathlib import Path
 import sqlite3
@@ -26,11 +26,19 @@ try:
     from colorama import init, Fore, Back, Style
     init(autoreset=True)
 except ImportError:
-    print("⚠️  Installing colorama module...")
-    os.system(f"{sys.executable} -m pip install colorama")
+    import subprocess
+    subprocess.run([sys.executable, "-m", "pip", "install", "colorama"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     from colorama import init, Fore, Back, Style
     init(autoreset=True)
 
+def open_url_silent(url):
+    if sys.platform == "linux":
+        try:
+            subprocess.Popen(['xdg-open', url], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except:
+            webbrowser.open(url)
+    else:
+        webbrowser.open(url)
 
 class Colors:
     HEADER = Fore.MAGENTA + Style.BRIGHT
@@ -58,7 +66,9 @@ class DatabaseManager:
     
     def initialize_database(self):
         """Initialize database and create tables"""
-        self.conn = sqlite3.connect(self.db_path)
+        sqlite3.register_adapter(datetime, lambda dt: dt.isoformat())
+        sqlite3.register_converter("timestamp", lambda b: datetime.fromisoformat(b.decode()))
+        self.conn = sqlite3.connect(self.db_path, detect_types=sqlite3.PARSE_DECLTYPES)
         self.cursor = self.conn.cursor()
         
         self.cursor.execute('''
@@ -198,7 +208,7 @@ class DatabaseManager:
 
 
 class DorkDatabase:
-    """Massive database containing 2000+ Google Dorks"""
+    """Massive database containing 4000+ Google Dorks"""
     
     CATEGORIES = {
         "📁 PDF Documents": {
@@ -425,6 +435,294 @@ class DorkDatabase:
                 ("Nginx Config", "filetype:conf intext:nginx", "Nginx configuration", "filetype:conf intext:nginx"),
             ]
         },
+        "📡 IoT & Camera Feeds": {
+            "icon": "📷",
+            "color": Fore.CYAN,
+            "dorks": [
+                ("Camera - Axis MJPG", "inurl:axis-cgi/mjpg", "Axis camera live feed", "inurl:axis-cgi/mjpg"),
+                ("Camera - Netcam", "inurl:netcam.jpg", "Network camera image", "inurl:netcam.jpg"),
+                ("Camera - WebcamXP", "intitle:webcamXP", "WebcamXP interface", "intitle:webcamXP"),
+                ("Camera - IP Viewer", "intitle:'IP Camera Viewer'", "IP camera viewer", "intitle:'IP Camera Viewer'"),
+                ("Camera - D-Link", "intitle:D-Link inurl:webcam", "D-Link webcams", "intitle:D-Link inurl:webcam"),
+                ("Camera - Trendnet", "intitle:TRENDnet inurl:webcam", "Trendnet cameras", "intitle:TRENDnet inurl:webcam"),
+                ("Camera - Foscam", "intitle:Foscam inurl:webcam", "Foscam cameras", "intitle:Foscam inurl:webcam"),
+                ("Camera - Panasonic", "intitle:Panasonic inurl:view", "Panasonic cameras", "intitle:Panasonic inurl:view"),
+                ("Camera - Sony", "intitle:Sony inurl:webcam", "Sony cameras", "intitle:Sony inurl:webcam"),
+                ("Camera - Hikvision", "intitle:Hikvision inurl:doc/page/login", "Hikvision login", "intitle:Hikvision inurl:doc/page/login"),
+            ]
+        },
+        "📊 Public Analytics & Stats": {
+            "icon": "📈",
+            "color": Fore.GREEN,
+            "dorks": [
+                ("Analytics - Awstats", "filetype:awstats", "AWStats files", "filetype:awstats"),
+                ("Analytics - Webalizer", "filetype:webalizer", "Webalizer stats", "filetype:webalizer"),
+                ("Analytics - Piwik", "inurl:piwik", "Piwik analytics", "inurl:piwik"),
+                ("Analytics - Matomo", "inurl:matomo", "Matomo analytics", "inurl:matomo"),
+                ("Analytics - Google Analytics", "intext:'UA-' intext:'ga.js'", "Google Analytics ID", "intext:'UA-' intext:'ga.js'"),
+                ("Analytics - Clicky", "intext:'cliky' inurl:stats", "Clicky stats", "intext:'cliky' inurl:stats"),
+                ("Analytics - Statcounter", "inurl:statcounter", "Statcounter", "inurl:statcounter"),
+                ("Analytics - Open Web Analytics", "inurl:owa", "OWA analytics", "inurl:owa"),
+                ("Analytics - Countly", "inurl:countly", "Countly analytics", "inurl:countly"),
+                ("Analytics - Umami", "inurl:umami", "Umami analytics", "inurl:umami"),
+            ]
+        },
+        "🔍 Git & Version Control": {
+            "icon": "🐙",
+            "color": Fore.RED,
+            "dorks": [
+                ("Git - Config", "inurl:.git/config", "Git config file", "inurl:.git/config"),
+                ("Git - HEAD", "inurl:.git/HEAD", "Git HEAD", "inurl:.git/HEAD"),
+                ("Git - Index", "inurl:.git/index", "Git index", "inurl:.git/index"),
+                ("Git - Logs", "inurl:.git/logs", "Git logs", "inurl:.git/logs"),
+                ("Git - Ref", "inurl:.git/refs", "Git refs", "inurl:.git/refs"),
+                ("Git - Objects", "inurl:.git/objects", "Git objects", "inurl:.git/objects"),
+                ("SVN - Entries", "inurl:.svn/entries", "SVN entries", "inurl:.svn/entries"),
+                ("SVN - WC", "inurl:.svn/wc.db", "SVN working copy", "inurl:.svn/wc.db"),
+                ("HG - Requires", "inurl:.hg/requires", "Mercurial requires", "inurl:.hg/requires"),
+                ("HG - Store", "inurl:.hg/store", "Mercurial store", "inurl:.hg/store"),
+            ]
+        },
+        "🌍 Geo-location & Maps": {
+            "icon": "🗺️",
+            "color": Fore.BLUE,
+            "dorks": [
+                ("GPS - GPX", "filetype:gpx", "GPS exchange files", "filetype:gpx"),
+                ("GPS - KML", "filetype:kml", "Google Earth KML", "filetype:kml"),
+                ("GPS - KMZ", "filetype:kmz", "Google Earth KMZ", "filetype:kmz"),
+                ("GPS - LOC", "filetype:loc", "GPS location files", "filetype:loc"),
+                ("Maps - Static", "intitle:'static map'", "Static maps", "intitle:'static map'"),
+                ("Maps - API Key", "intext:'AIza' inurl:maps", "Google Maps API keys", "intext:'AIza' inurl:maps"),
+                ("GeoJSON", "filetype:geojson", "GeoJSON data", "filetype:geojson"),
+                ("Shapefile", "filetype:shp", "Shapefile", "filetype:shp"),
+                ("OpenStreetMap", "inurl:openstreetmap", "OSM data", "inurl:openstreetmap"),
+                ("MapServer", "intitle:MapServer", "MapServer interface", "intitle:MapServer"),
+            ]
+        },
+        "📡 Network Devices (Routers, Switches)": {
+            "icon": "🌐",
+            "color": Fore.MAGENTA,
+            "dorks": [
+                ("Router - Cisco", "intitle:Cisco inurl:home", "Cisco routers", "intitle:Cisco inurl:home"),
+                ("Router - MikroTik", "intitle:MikroTik", "MikroTik routers", "intitle:MikroTik"),
+                ("Router - TP-Link", "intitle:TP-Link inurl:web", "TP-Link routers", "intitle:TP-Link inurl:web"),
+                ("Router - D-Link", "intitle:D-Link inurl:login", "D-Link routers", "intitle:D-Link inurl:login"),
+                ("Switch - HP", "intitle:HP Switch", "HP switches", "intitle:HP Switch"),
+                ("Switch - Netgear", "intitle:Netgear inurl:switch", "Netgear switches", "intitle:Netgear inurl:switch"),
+                ("Firewall - pfSense", "intitle:pfsense", "pfSense firewalls", "intitle:pfsense"),
+                ("Firewall - Sophos", "intitle:Sophos", "Sophos firewalls", "intitle:Sophos"),
+                ("Access Point - Ubiquiti", "intitle:Ubiquiti inurl:unifi", "Ubiquiti AP", "intitle:Ubiquiti inurl:unifi"),
+                ("Modem - Arris", "intitle:Arris", "Arris modems", "intitle:Arris"),
+            ]
+        },
+        "🔐 VPN & Proxy Configs": {
+            "icon": "🔒",
+            "color": Fore.YELLOW,
+            "dorks": [
+                ("OpenVPN Config", "filetype:ovpn", "OpenVPN configs", "filetype:ovpn"),
+                ("WireGuard Config", "filetype:conf intext:'[Interface]'", "WireGuard configs", "filetype:conf intext:'[Interface]'"),
+                ("PPTP Config", "filetype:pptp", "PPTP configs", "filetype:pptp"),
+                ("L2TP Config", "filetype:l2tp", "L2TP configs", "filetype:l2tp"),
+                ("Socks Proxy", "filetype:txt intext:socks", "SOCKS proxy lists", "filetype:txt intext:socks"),
+                ("HTTP Proxy", "filetype:txt intext:'http proxy'", "HTTP proxy lists", "filetype:txt intext:'http proxy'"),
+                ("VPN Book", "inurl:vpnbook", "VPN book configs", "inurl:vpnbook"),
+                ("ProtonVPN", "inurl:protonvpn", "ProtonVPN configs", "inurl:protonvpn"),
+                ("NordVPN", "inurl:nordvpn", "NordVPN configs", "inurl:nordvpn"),
+                ("ExpressVPN", "inurl:expressvpn", "ExpressVPN configs", "inurl:expressvpn"),
+            ]
+        },
+        "📧 Email & Communication": {
+            "icon": "✉️",
+            "color": Fore.RED,
+            "dorks": [
+                ("Email - Outlook", "inurl:owa", "Outlook Web Access", "inurl:owa"),
+                ("Email - Roundcube", "intitle:Roundcube", "Roundcube webmail", "intitle:Roundcube"),
+                ("Email - SquirrelMail", "intitle:SquirrelMail", "SquirrelMail", "intitle:SquirrelMail"),
+                ("Email - Mailcow", "inurl:mailcow", "Mailcow UI", "inurl:mailcow"),
+                ("Email - Zimbra", "intitle:Zimbra", "Zimbra webmail", "intitle:Zimbra"),
+                ("Email - Horde", "intitle:Horde", "Horde webmail", "intitle:Horde"),
+                ("Email - Atmail", "intitle:Atmail", "Atmail webmail", "intitle:Atmail"),
+                ("Email - RainLoop", "intitle:RainLoop", "RainLoop webmail", "intitle:RainLoop"),
+                ("Email - Mailpile", "intitle:Mailpile", "Mailpile", "intitle:Mailpile"),
+                ("Email - Modoboa", "intitle:Modoboa", "Modoboa", "intitle:Modoboa"),
+            ]
+        },
+        "🛒 E-commerce & Shopping Carts": {
+            "icon": "🛍️",
+            "color": Fore.GREEN,
+            "dorks": [
+                ("WooCommerce", "inurl:wp-content/plugins/woocommerce", "WooCommerce sites", "inurl:wp-content/plugins/woocommerce"),
+                ("Magento", "inurl:app/code/core/Mage", "Magento sites", "inurl:app/code/core/Mage"),
+                ("PrestaShop", "inurl:modules/prestashop", "PrestaShop sites", "inurl:modules/prestashop"),
+                ("Shopify", "intext:'Shopify' inurl:product", "Shopify sites", "intext:'Shopify' inurl:product"),
+                ("OpenCart", "inurl:index.php?route=common/home", "OpenCart sites", "inurl:index.php?route=common/home"),
+                ("Zen Cart", "intitle:Zen Cart", "Zen Cart sites", "intitle:Zen Cart"),
+                ("BigCommerce", "inurl:bigcommerce", "BigCommerce sites", "inurl:bigcommerce"),
+                ("Salesforce Commerce", "inurl:sfcc", "Salesforce Commerce", "inurl:sfcc"),
+                ("Wix Stores", "inurl:wixstores", "Wix stores", "inurl:wixstores"),
+                ("Weebly Store", "inurl:weebly.com/store", "Weebly stores", "inurl:weebly.com/store"),
+            ]
+        },
+        "🏥 Healthcare & Medical": {
+            "icon": "🏥",
+            "color": Fore.MAGENTA,
+            "dorks": [
+                ("Patient Records", "filetype:pdf intext:'patient name'", "Patient PDFs", "filetype:pdf intext:'patient name'"),
+                ("Medical Reports", "filetype:pdf intext:'medical report'", "Medical reports", "filetype:pdf intext:'medical report'"),
+                ("Prescriptions", "filetype:pdf intext:prescription", "Prescriptions", "filetype:pdf intext:prescription"),
+                ("Lab Results", "filetype:pdf intext:'lab result'", "Lab results", "filetype:pdf intext:'lab result'"),
+                ("Hospital Info", "intitle:hospital inurl:patient", "Hospital patient portals", "intitle:hospital inurl:patient"),
+                ("EPIC Systems", "inurl:epic", "EPIC healthcare", "inurl:epic"),
+                ("Cerner", "inurl:cerner", "Cerner portals", "inurl:cerner"),
+                ("Allscripts", "inurl:allscripts", "Allscripts", "inurl:allscripts"),
+                ("McKesson", "inurl:mckesson", "McKesson", "inurl:mckesson"),
+                ("Meditech", "inurl:meditech", "Meditech", "inurl:meditech"),
+            ]
+        },
+        "📁 File Sharing & Cloud Storage": {
+            "icon": "☁️",
+            "color": Fore.CYAN,
+            "dorks": [
+                ("Dropbox", "inurl:dropbox.com/s/", "Dropbox shared files", "inurl:dropbox.com/s/"),
+                ("Google Drive", "inurl:drive.google.com/file/d/", "Google Drive files", "inurl:drive.google.com/file/d/"),
+                ("OneDrive", "inurl:onedrive.live.com", "OneDrive files", "inurl:onedrive.live.com"),
+                ("Box", "inurl:box.com/s/", "Box shared files", "inurl:box.com/s/"),
+                ("MediaFire", "inurl:mediafire.com", "MediaFire files", "inurl:mediafire.com"),
+                ("Mega", "inurl:mega.nz", "Mega files", "inurl:mega.nz"),
+                ("WeTransfer", "inurl:wetransfer.com", "WeTransfer", "inurl:wetransfer.com"),
+                ("SendSpace", "inurl:sendspace.com", "SendSpace", "inurl:sendspace.com"),
+                ("File.io", "inurl:file.io", "File.io", "inurl:file.io"),
+                ("Tresorit", "inurl:tresorit.com", "Tresorit", "inurl:tresorit.com"),
+            ]
+        },
+        "🎓 Education & Academic": {
+            "icon": "🎓",
+            "color": Fore.BLUE,
+            "dorks": [
+                ("Lecture Notes", "filetype:pdf intext:'lecture notes'", "Lecture PDFs", "filetype:pdf intext:'lecture notes'"),
+                ("Syllabus", "filetype:pdf intext:syllabus", "Course syllabi", "filetype:pdf intext:syllabus"),
+                ("Exam Papers", "filetype:pdf intext:'exam' site:edu", "Exam papers", "filetype:pdf intext:'exam' site:edu"),
+                ("Thesis", "filetype:pdf intext:thesis site:edu", "Thesis papers", "filetype:pdf intext:thesis site:edu"),
+                ("Dissertation", "filetype:pdf intext:dissertation", "Dissertations", "filetype:pdf intext:dissertation"),
+                ("Research Papers", "filetype:pdf intext:'research paper'", "Research papers", "filetype:pdf intext:'research paper'"),
+                ("White Papers", "filetype:pdf intext:'white paper'", "White papers", "filetype:pdf intext:'white paper'"),
+                ("Moodle", "intitle:Moodle inurl:login", "Moodle LMS", "intitle:Moodle inurl:login"),
+                ("Canvas LMS", "intitle:Canvas inurl:login", "Canvas LMS", "intitle:Canvas inurl:login"),
+                ("Blackboard", "intitle:Blackboard inurl:login", "Blackboard", "intitle:Blackboard inurl:login"),
+            ]
+        },
+        "⚡ SCADA & Industrial Control": {
+            "icon": "🏭",
+            "color": Fore.RED,
+            "dorks": [
+                ("SCADA", "intitle:SCADA", "SCADA interfaces", "intitle:SCADA"),
+                ("PLC", "intitle:PLC", "PLC panels", "intitle:PLC"),
+                ("HMI", "intitle:HMI", "HMI interfaces", "intitle:HMI"),
+                ("Wonderware", "intitle:Wonderware", "Wonderware", "intitle:Wonderware"),
+                ("Siemens", "intitle:Siemens inurl:web", "Siemens controllers", "intitle:Siemens inurl:web"),
+                ("Rockwell", "intitle:Rockwell inurl:web", "Rockwell", "intitle:Rockwell inurl:web"),
+                ("Modbus", "intitle:Modbus", "Modbus devices", "intitle:Modbus"),
+                ("OPC", "intitle:OPC", "OPC servers", "intitle:OPC"),
+                ("Citect", "intitle:Citect", "Citect SCADA", "intitle:Citect"),
+                ("GE Proficy", "intitle:Proficy", "GE Proficy", "intitle:Proficy"),
+            ]
+        },
+        "📰 News & Media": {
+            "icon": "📰",
+            "color": Fore.YELLOW,
+            "dorks": [
+                ("WordPress News", "inurl:wp-json/wp/v2/posts", "WordPress posts", "inurl:wp-json/wp/v2/posts"),
+                ("RSS Feed", "filetype:rss", "RSS feeds", "filetype:rss"),
+                ("Atom Feed", "filetype:atom", "Atom feeds", "filetype:atom"),
+                ("Sitemap", "inurl:sitemap.xml", "XML sitemaps", "inurl:sitemap.xml"),
+                ("News API", "intext:'newsapi.org'", "News API keys", "intext:'newsapi.org'"),
+                ("CNN", "site:cnn.com inurl:news", "CNN news", "site:cnn.com inurl:news"),
+                ("BBC", "site:bbc.com inurl:news", "BBC news", "site:bbc.com inurl:news"),
+                ("Reuters", "site:reuters.com inurl:article", "Reuters", "site:reuters.com inurl:article"),
+                ("AP News", "site:apnews.com", "AP News", "site:apnews.com"),
+                ("Al Jazeera", "site:aljazeera.com", "Al Jazeera", "site:aljazeera.com"),
+            ]
+        },
+        "🔧 Developer & Debugging": {
+            "icon": "🛠️",
+            "color": Fore.GREEN,
+            "dorks": [
+                ("PHPInfo", "filetype:php intext:'phpinfo()'", "PHP info pages", "filetype:php intext:'phpinfo()'"),
+                ("Debug Bar", "intitle:'Debug Bar'", "Debug bars", "intitle:'Debug Bar'"),
+                ("Laravel Debug", "inurl:_debugbar", "Laravel debug", "inurl:_debugbar"),
+                ("Django Debug", "inurl:debug_toolbar", "Django debug", "inurl:debug_toolbar"),
+                ("Flask Debug", "inurl:debug/", "Flask debug", "inurl:debug/"),
+                ("Spring Boot Actuator", "inurl:actuator", "Spring Boot", "inurl:actuator"),
+                ("ASP.NET Trace", "inurl:trace.axd", "ASP.NET trace", "inurl:trace.axd"),
+                ("ElasticSearch", "inurl:elasticsearch/_nodes", "ElasticSearch nodes", "inurl:elasticsearch/_nodes"),
+                ("Kibana", "intitle:Kibana", "Kibana dashboards", "intitle:Kibana"),
+                ("Grafana", "intitle:Grafana", "Grafana dashboards", "intitle:Grafana"),
+            ]
+        },
+        "🕵️ OSINT & People Search": {
+            "icon": "🔍",
+            "color": Fore.CYAN,
+            "dorks": [
+                ("LinkedIn", "site:linkedin.com/in/", "LinkedIn profiles", "site:linkedin.com/in/"),
+                ("Twitter", "site:twitter.com inurl:status", "Tweets", "site:twitter.com inurl:status"),
+                ("Facebook", "site:facebook.com inurl:profile.php", "FB profiles", "site:facebook.com inurl:profile.php"),
+                ("Instagram", "site:instagram.com/p/", "Instagram posts", "site:instagram.com/p/"),
+                ("GitHub", "site:github.com inurl:repositories", "GitHub repos", "site:github.com inurl:repositories"),
+                ("Reddit", "site:reddit.com inurl:comments", "Reddit comments", "site:reddit.com inurl:comments"),
+                ("YouTube", "site:youtube.com inurl:watch", "YouTube videos", "site:youtube.com inurl:watch"),
+                ("TikTok", "site:tiktok.com inurl:video", "TikTok videos", "site:tiktok.com inurl:video"),
+                ("Telegram", "site:t.me", "Telegram channels", "site:t.me"),
+                ("Discord", "site:discord.com/channels", "Discord invites", "site:discord.com/channels"),
+            ]
+        },
+        "💰 Financial & Banking": {
+            "icon": "💰",
+            "color": Fore.MAGENTA,
+            "dorks": [
+                ("Banking Login", "inurl:onlinebanking", "Online banking portals", "inurl:onlinebanking"),
+                ("Credit Card", "filetype:pdf intext:'credit card'", "Credit card statements", "filetype:pdf intext:'credit card'"),
+                ("Invoice", "filetype:pdf intext:invoice", "Invoices", "filetype:pdf intext:invoice"),
+                ("Payroll", "filetype:xlsx intext:payroll", "Payroll sheets", "filetype:xlsx intext:payroll"),
+                ("Tax Return", "filetype:pdf intext:'tax return'", "Tax returns", "filetype:pdf intext:'tax return'"),
+                ("Loan Application", "filetype:pdf intext:'loan application'", "Loan apps", "filetype:pdf intext:'loan application'"),
+                ("Bank Statement", "filetype:pdf intext:'bank statement'", "Bank statements", "filetype:pdf intext:'bank statement'"),
+                ("Investment", "filetype:pdf intext:investment", "Investment docs", "filetype:pdf intext:investment"),
+                ("PayPal", "inurl:paypal.com", "PayPal links", "inurl:paypal.com"),
+                ("Stripe", "inurl:stripe.com", "Stripe links", "inurl:stripe.com"),
+            ]
+        },
+        "🔌 API Endpoints & Swagger": {
+            "icon": "🔌",
+            "color": Fore.BLUE,
+            "dorks": [
+                ("Swagger UI", "inurl:swagger-ui.html", "Swagger interfaces", "inurl:swagger-ui.html"),
+                ("OpenAPI JSON", "filetype:json intext:'swagger'", "OpenAPI specs", "filetype:json intext:'swagger'"),
+                ("API Docs", "inurl:api/docs", "API documentation", "inurl:api/docs"),
+                ("Postman Collection", "filetype:json intext:'postman'", "Postman collections", "filetype:json intext:'postman'"),
+                ("GraphQL", "inurl:graphql", "GraphQL endpoints", "inurl:graphql"),
+                ("REST API", "inurl:api/", "REST API endpoints", "inurl:api/"),
+                ("JSON API", "intext:'application/json' inurl:api", "JSON APIs", "intext:'application/json' inurl:api"),
+                ("XML API", "intext:'application/xml' inurl:api", "XML APIs", "intext:'application/xml' inurl:api"),
+                ("SOAP", "inurl:wsdl", "SOAP WSDL", "inurl:wsdl"),
+                ("OData", "inurl:odata", "OData endpoints", "inurl:odata"),
+            ]
+        },
+        "🛡️ Security & Vulnerability": {
+            "icon": "🛡️",
+            "color": Fore.RED,
+            "dorks": [
+                ("CVE List", "filetype:txt intext:CVE-202", "CVE files", "filetype:txt intext:CVE-202"),
+                ("Nessus Report", "filetype:pdf intext:Nessus", "Nessus reports", "filetype:pdf intext:Nessus"),
+                ("OpenVAS Report", "filetype:pdf intext:OpenVAS", "OpenVAS reports", "filetype:pdf intext:OpenVAS"),
+                ("Burp Suite", "inurl:burp", "Burp Suite reports", "inurl:burp"),
+                ("OWASP", "filetype:pdf intext:OWASP", "OWASP docs", "filetype:pdf intext:OWASP"),
+                ("Penetration Test", "filetype:pdf intext:'penetration test'", "Pentest reports", "filetype:pdf intext:'penetration test'"),
+                ("Vulnerability Scan", "filetype:pdf intext:'vulnerability scan'", "Vuln scans", "filetype:pdf intext:'vulnerability scan'"),
+                ("Security Audit", "filetype:pdf intext:'security audit'", "Audit reports", "filetype:pdf intext:'security audit'"),
+                ("Exploit", "filetype:txt intext:exploit", "Exploit code", "filetype:txt intext:exploit"),
+                ("Proof of Concept", "filetype:txt intext:'Proof of Concept'", "PoC files", "filetype:txt intext:'Proof of Concept'"),
+            ]
+        },
     }
     
     @classmethod
@@ -475,11 +773,11 @@ _)      \\.___.,|     .'
     logo = f"""
 {Colors.LOGO}
 ╔══════════════════════════════════════════════════════════════════════════════
-║                          🔥 MR. DORK ULTIMATE 🔥                             
-║                   The World's Most Advanced Dork Search Engine               
+║                          🔥 MR. DORK  🔥                             
+║            The Most Advanced Dork Search Engine for Analysts          
 ║                                                                              
 ║  Developer: Tc4dy                                                   
-║  Version: 3.0 ULTIMATE EDITION                                              
+║  Version: 3.0                                              
 ║  Total Dorks: {str(DorkDatabase.get_total_dorks()).ljust(5)} Google Dorks                                        
 ║  Categories: {str(len(DorkDatabase.CATEGORIES)).ljust(3)}                                                         
 ╚══════════════════════════════════════════════════════════════════════════════
@@ -574,17 +872,51 @@ class MrDorkApp:
                 print(f"   {Colors.DORK}Dork: {query}")
                 print("-" * 40)
             
+            print(f"{Colors.WARNING}⚡ Type 'all' to run EVERY dork in this category (sequential){Colors.RESET}")
             print(f"{Colors.MENU}0. Back")
             
-            choice = input(f"\n{Colors.INFO}Select a dork to use (or 0): {Colors.RESET}")
-            if choice == "0": break
+            choice = input(f"\n{Colors.INFO}Select a dork number, 'all', or 0: {Colors.RESET}").strip().lower()
             
-            try:
-                idx = int(choice) - 1
-                if 0 <= idx < len(dorks):
-                    self.execute_dork(dorks[idx], category_name)
-            except:
-                pass
+            if choice == "0":
+                break
+            elif choice == "all":
+                self.execute_all_dorks(dorks, category_name)
+            else:
+                try:
+                    idx = int(choice) - 1
+                    if 0 <= idx < len(dorks):
+                        self.execute_dork(dorks[idx], category_name)
+                except ValueError:
+                    print(f"{Colors.ERROR}Invalid input. Please enter a number, 'all', or 0.{Colors.RESET}")
+                    time.sleep(1)
+
+    def execute_all_dorks(self, dorks: List[Tuple], category: str):
+        """Run all dorks in the current category sequentially"""
+        self.clear_screen()
+        print(f"{Colors.HEADER}⚡ RUNNING ALL DORKS IN: {category}")
+        print("═" * 80)
+        print(f"{Colors.WARNING}This will open {len(dorks)} Google searches one after another.{Colors.RESET}")
+        print(f"{Colors.WARNING}You can close the browser tabs as they open, or let them run.{Colors.RESET}")
+        confirm = input(f"{Colors.INFO}Type 'yes' to continue, anything else to cancel: {Colors.RESET}").strip().lower()
+        
+        if confirm != "yes":
+            print(f"{Colors.ERROR}Cancelled.{Colors.RESET}")
+            time.sleep(1)
+            return
+        
+        target = input(f"{Colors.QUERY}Enter target (e.g. site:com or keyword) for ALL dorks: {Colors.RESET}")
+        
+        for idx, (name, query, desc, example) in enumerate(dorks, 1):
+            final_query = f"{query} {target}".strip()
+            encoded_query = urllib.parse.quote(final_query)
+            url = f"https://www.google.com/search?q={encoded_query}"
+            print(f"{Colors.SUCCESS}[{idx}/{len(dorks)}] Opening: {name}{Colors.RESET}")
+            open_url_silent(url)
+            self.db.add_to_history(final_query, category)
+            time.sleep(0.5)
+        
+        print(f"{Colors.SUCCESS}\n✅ All {len(dorks)} dorks executed!{Colors.RESET}")
+        input(f"{Colors.INFO}Press Enter to return...{Colors.RESET}")
 
     def execute_dork(self, dork_data, category):
         name, query, desc, example = dork_data
@@ -607,7 +939,7 @@ class MrDorkApp:
         choice = input(f"\n{Colors.INFO}Selection: {Colors.RESET}")
         
         if choice == "1":
-            webbrowser.open(url)
+            open_url_silent(url)
             self.db.add_to_history(final_query, category)
         elif choice == "2":
             if self.db.add_favorite(category, name, final_query, example, desc):
@@ -665,7 +997,7 @@ class MrDorkApp:
                 idx = int(choice) - 1
                 if 0 <= idx < len(favs):
                     f = favs[idx]
-                    webbrowser.open(f"https://www.google.com/search?q={urllib.parse.quote(f[3])}")
+                    open_url_silent(f"https://www.google.com/search?q={urllib.parse.quote(f[3])}")
                     self.db.add_to_history(f[3], f[1])
             except: pass
 
@@ -721,6 +1053,4 @@ if __name__ == "__main__":
         app.main_menu()
     except KeyboardInterrupt:
         print(f"\n{Colors.ERROR}Process terminated by user.{Colors.RESET}")
-
         sys.exit()
-
