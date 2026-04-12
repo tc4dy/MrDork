@@ -1,8 +1,12 @@
+# Minimum: Python 3.8
+# Recommended: Python 3.10 or 3.11
+# Works fine with: 3.12, 3.13
 #Tool Owner - @tc4dy | github.com/tc4dy
+
 """
 ╔══════════════════════════════════════════════════════════════════════════════
-║                          🔥 MR. DORK ULTIMATE 🔥                             
-║                       The Advanced Dork Search Engine               
+║                          🔥 MR. DORK 🔥                             
+║          The Most Advanced Dork Search Engine for Analysts               
 ║                                                                              
 ║  Developer: @tc4dy                                                   
 ║  Version: 3.0                                              
@@ -208,7 +212,6 @@ class DatabaseManager:
 
 
 class DorkDatabase:
-    """Massive database containing 4000+ Google Dorks"""
     
     CATEGORIES = {
         "📁 PDF Documents": {
