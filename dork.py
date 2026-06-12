@@ -1,17 +1,10 @@
-# Minimum: Python 3.8
-# Recommended: Python 3.10 or 3.11
-# Works fine with: 3.12, 3.13
-#Tool Owner - @tc4dy | github.com/tc4dy
-
 """
-╔══════════════════════════════════════════════════════════════════════════════
-║                          🔥 MR. DORK 🔥                             
-║          The Most Advanced Dork Search Engine for Analysts               
-║                                                                              
-║  Developer: @tc4dy                                                   
-║  Version: 3.0                                              
-║  Description: Supreme power with Google Dorks across all categories you might need!      
-╚══════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════════════════════════════════════════════
+                           🔥 MR. DORK 🔥                             
+           The Advanced Dork Search Engine for Analysts               
+                                                                              
+                        Developer: @tc4dy                                                                                              
+══════════════════════════════════════════════════════════════════════════════
 """
 
 import os
@@ -775,15 +768,15 @@ _)      \\.___.,|     .'
 
     logo = f"""
 {Colors.LOGO}
-╔══════════════════════════════════════════════════════════════════════════════
-║                          🔥 MR. DORK  🔥                             
-║            The Most Advanced Dork Search Engine for Analysts          
-║                                                                              
-║  Developer: Tc4dy                                                   
-║  Version: 3.0                                              
-║  Total Dorks: {str(DorkDatabase.get_total_dorks()).ljust(5)} Google Dorks                                        
-║  Categories: {str(len(DorkDatabase.CATEGORIES)).ljust(3)}                                                         
-╚══════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════════════════════════════════════════════
+                            MR. DORK                               
+            The Advanced Dork Search Engine for Analysts          
+                                                                              
+                        Developer: @tc4dy                                                   
+                                           
+  Total Dorks: {str(DorkDatabase.get_total_dorks()).ljust(5)} Google Dorks                                        
+  Categories: {str(len(DorkDatabase.CATEGORIES)).ljust(3)}                                                         
+══════════════════════════════════════════════════════════════════════════════
 {Colors.RESET}
 {Colors.WARNING}⚠️  ETHICAL USE WARNING: This tool is for educational and legal testing only!{Colors.RESET}
 {Colors.ERROR}⚠️  Unauthorized system access is illegal and can have serious consequences!{Colors.RESET}
