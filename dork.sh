@@ -1,11 +1,3 @@
-#!/bin/bash
-
-# =====================================================
-#                    MR. DORK
-#    The Advanced Dork Search Engine for Analysts
-#                  Developer: @tc4dy
-# =====================================================
-
 DATABASE_FILE="mr_dork_data.db"
 SEARCH_HISTORY_FILE="search_history.txt"
 FAVORITES_FILE="favorites.txt"
