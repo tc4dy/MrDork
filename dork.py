@@ -1,12 +1,3 @@
-"""
-══════════════════════════════════════════════════════════════════════════════
-                           🔥 MR. DORK 🔥                             
-           The Advanced Dork Search Engine for Analysts               
-                                                                              
-                        Developer: @tc4dy                                                                                              
-══════════════════════════════════════════════════════════════════════════════
-"""
-
 import os
 import sys
 import json
