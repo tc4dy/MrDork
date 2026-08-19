@@ -44,7 +44,6 @@ class Colors:
 
 
 class DatabaseManager:
-    """SQLite database management - Favorites, History, Statistics"""
     
     def __init__(self, db_path: str = "mr_dork_data.db"):
         self.db_path = db_path
@@ -53,7 +52,6 @@ class DatabaseManager:
         self.initialize_database()
     
     def initialize_database(self):
-        """Initialize database and create tables"""
         sqlite3.register_adapter(datetime, lambda dt: dt.isoformat())
         sqlite3.register_converter("timestamp", lambda b: datetime.fromisoformat(b.decode()))
         self.conn = sqlite3.connect(self.db_path, detect_types=sqlite3.PARSE_DECLTYPES)
@@ -111,7 +109,7 @@ class DatabaseManager:
             self.conn.commit()
             return True
         except Exception as e:
-            print(f"{Colors.ERROR}❌ Error adding favorite: {e}{Colors.RESET}")
+            print(f"{Colors.ERROR}[!] Error adding favorite: {e}{Colors.RESET}")
             return False
     
     def remove_favorite(self, query: str):
@@ -198,8 +196,8 @@ class DatabaseManager:
 class DorkDatabase:
     
     CATEGORIES = {
-        "📁 PDF Documents": {
-            "icon": "📄",
+        "[*] PDF Documents": {
+            "icon": "[*]",
             "color": Fore.RED,
             "dorks": [
                 ("PDF - General", "filetype:pdf", "Find all PDF files", "filetype:pdf site:edu.tr"),
@@ -212,8 +210,8 @@ class DorkDatabase:
                 ("PDF - Thesis", "filetype:pdf intext:thesis", "Thesis documents", "filetype:pdf intext:thesis site:edu"),
             ]
         },
-        "📊 Excel & Spreadsheets": {
-            "icon": "📈",
+        "[&] Excel & Spreadsheets": {
+            "icon": "[&]",
             "color": Fore.GREEN,
             "dorks": [
                 ("Excel - XLS", "filetype:xls", "XLS files", "filetype:xls site:example.com"),
@@ -226,8 +224,8 @@ class DorkDatabase:
                 ("Excel - Inventory", "filetype:xls intext:inventory", "Inventory lists", "filetype:xls intext:inventory"),
             ]
         },
-        "📝 Word Documents": {
-            "icon": "📃",
+        "[#] Word Documents": {
+            "icon": "[#]",
             "color": Fore.BLUE,
             "dorks": [
                 ("Word - DOC", "filetype:doc", "DOC documents", "filetype:doc"),
@@ -240,8 +238,8 @@ class DorkDatabase:
                 ("Word - Procedure", "filetype:doc intext:procedure", "Procedure documents", "filetype:doc intext:procedure"),
             ]
         },
-        "💾 Database Files": {
-            "icon": "🗄️",
+        "[$] Database Files": {
+            "icon": "[$]",
             "color": Fore.CYAN,
             "dorks": [
                 ("SQL Dump", "filetype:sql", "SQL dump files", "filetype:sql intext:INSERT INTO"),
@@ -254,8 +252,8 @@ class DorkDatabase:
                 ("DB Credentials", "filetype:sql intext:password", "DB passwords", "filetype:sql intext:password"),
             ]
         },
-        "📜 Log Files": {
-            "icon": "📋",
+        "[+] Log Files": {
+            "icon": "[+]",
             "color": Fore.YELLOW,
             "dorks": [
                 ("Log - General", "filetype:log", "All log files", "filetype:log"),
@@ -268,8 +266,8 @@ class DorkDatabase:
                 ("FTP Logs", "filetype:log intext:ftp", "FTP logs", "filetype:log intext:ftp"),
             ]
         },
-        "💼 Backup Files": {
-            "icon": "💾",
+        "[%] Backup Files": {
+            "icon": "[%]",
             "color": Fore.MAGENTA,
             "dorks": [
                 ("Backup - BAK", "filetype:bak", "BAK backup files", "filetype:bak"),
@@ -282,8 +280,8 @@ class DorkDatabase:
                 ("Site Backup", "inurl:backup.zip", "Site backups", "inurl:backup.zip OR inurl:backup.tar"),
             ]
         },
-        "🔐 Admin Panels": {
-            "icon": "👑",
+        "[!] Admin Panels": {
+            "icon": "[!]",
             "color": Fore.RED + Style.BRIGHT,
             "dorks": [
                 ("Admin Panel", "inurl:admin", "Admin pages", "inurl:admin site:example.com"),
@@ -296,8 +294,8 @@ class DorkDatabase:
                 ("Backend Admin", "inurl:backend/admin", "Backend admin", "inurl:backend/admin"),
             ]
         },
-        "🔑 Login Pages": {
-            "icon": "🚪",
+        "[@] Login Pages": {
+            "icon": "[@]",
             "color": Fore.YELLOW + Style.BRIGHT,
             "dorks": [
                 ("Login Page", "inurl:login", "Login pages", "inurl:login"),
@@ -310,8 +308,8 @@ class DorkDatabase:
                 ("Secure Login", "inurl:secure/login", "Secure login", "inurl:secure/login"),
             ]
         },
-        "🗄️ phpMyAdmin": {
-            "icon": "🐬",
+        "[?] phpMyAdmin": {
+            "icon": "[?]",
             "color": Fore.CYAN + Style.BRIGHT,
             "dorks": [
                 ("phpMyAdmin", "inurl:phpmyadmin", "phpMyAdmin panels", "inurl:phpmyadmin"),
@@ -324,8 +322,8 @@ class DorkDatabase:
                 ("Adminer", "intitle:adminer", "Adminer (PMA alternative)", "intitle:adminer"),
             ]
         },
-        "⚙️ cPanel & WHM": {
-            "icon": "🎛️",
+        "[>] cPanel & WHM": {
+            "icon": "[>]",
             "color": Fore.GREEN + Style.BRIGHT,
             "dorks": [
                 ("cPanel", "inurl:cpanel", "cPanel panels", "inurl:cpanel"),
@@ -338,8 +336,8 @@ class DorkDatabase:
                 ("ISPConfig", "intitle:ispconfig", "ISPConfig panels", "intitle:ispconfig"),
             ]
         },
-        "📂 Open Directories": {
-            "icon": "📁",
+        "[<] Open Directories": {
+            "icon": "[<]",
             "color": Fore.BLUE + Style.BRIGHT,
             "dorks": [
                 ("Index Of", "intitle:index.of", "Directory listings", "intitle:index.of"),
@@ -352,8 +350,8 @@ class DorkDatabase:
                 ("Autoindex", "intitle:autoindex", "Auto index", "intitle:autoindex"),
             ]
         },
-        "📤 Upload Directories": {
-            "icon": "⬆️",
+        "[/] Upload Directories": {
+            "icon": "[/]",
             "color": Fore.MAGENTA + Style.BRIGHT,
             "dorks": [
                 ("Upload Dir", "intitle:index.of uploads", "Upload folders", "intitle:index.of uploads"),
@@ -366,8 +364,8 @@ class DorkDatabase:
                 ("Public Dir", "intitle:index.of public", "Public directories", "intitle:index.of public"),
             ]
         },
-        "⚙️ Config Directories": {
-            "icon": "🔧",
+        "[=] Config Directories": {
+            "icon": "[=]",
             "color": Fore.YELLOW + Style.BRIGHT,
             "dorks": [
                 ("Config Dir", "intitle:index.of config", "Config directories", "intitle:index.of config"),
@@ -380,8 +378,8 @@ class DorkDatabase:
                 ("Vendor Dir", "intitle:index.of vendor", "Vendor directories", "intitle:index.of vendor"),
             ]
         },
-        "🔑 Passwords": {
-            "icon": "🗝️",
+        "[#] Passwords": {
+            "icon": "[#]",
             "color": Fore.RED + Style.BRIGHT,
             "dorks": [
                 ("Password TXT", "filetype:txt intext:password", "Password txt files", "filetype:txt intext:password"),
@@ -394,8 +392,8 @@ class DorkDatabase:
                 ("Email Pass", "filetype:txt intext:email password", "Email passwords", "filetype:txt intext:email password"),
             ]
         },
-        "🔐 API Keys": {
-            "icon": "🔑",
+        "[$] API Keys": {
+            "icon": "[$]",
             "color": Fore.YELLOW + Style.BRIGHT,
             "dorks": [
                 ("API Key", "intext:api_key OR intext:apikey", "API keys", "intext:api_key filetype:json"),
@@ -408,8 +406,8 @@ class DorkDatabase:
                 ("GitHub Token", "intext:ghp_", "GitHub tokens", "intext:ghp_ OR intext:gho_"),
             ]
         },
-        "📋 Config Files": {
-            "icon": "⚙️",
+        "[&] Config Files": {
+            "icon": "[&]",
             "color": Fore.CYAN + Style.BRIGHT,
             "dorks": [
                 ("ENV Files", "filetype:env", "Environment files", "filetype:env"),
@@ -422,8 +420,8 @@ class DorkDatabase:
                 ("Nginx Config", "filetype:conf intext:nginx", "Nginx configuration", "filetype:conf intext:nginx"),
             ]
         },
-        "📡 IoT & Camera Feeds": {
-            "icon": "📷",
+        "[+] IoT & Camera Feeds": {
+            "icon": "[+]",
             "color": Fore.CYAN,
             "dorks": [
                 ("Camera - Axis MJPG", "inurl:axis-cgi/mjpg", "Axis camera live feed", "inurl:axis-cgi/mjpg"),
@@ -438,8 +436,8 @@ class DorkDatabase:
                 ("Camera - Hikvision", "intitle:Hikvision inurl:doc/page/login", "Hikvision login", "intitle:Hikvision inurl:doc/page/login"),
             ]
         },
-        "📊 Public Analytics & Stats": {
-            "icon": "📈",
+        "[*] Public Analytics & Stats": {
+            "icon": "[*]",
             "color": Fore.GREEN,
             "dorks": [
                 ("Analytics - Awstats", "filetype:awstats", "AWStats files", "filetype:awstats"),
@@ -454,8 +452,8 @@ class DorkDatabase:
                 ("Analytics - Umami", "inurl:umami", "Umami analytics", "inurl:umami"),
             ]
         },
-        "🔍 Git & Version Control": {
-            "icon": "🐙",
+        "[@] Git & Version Control": {
+            "icon": "[@]",
             "color": Fore.RED,
             "dorks": [
                 ("Git - Config", "inurl:.git/config", "Git config file", "inurl:.git/config"),
@@ -470,8 +468,8 @@ class DorkDatabase:
                 ("HG - Store", "inurl:.hg/store", "Mercurial store", "inurl:.hg/store"),
             ]
         },
-        "🌍 Geo-location & Maps": {
-            "icon": "🗺️",
+        "[?] Geo-location & Maps": {
+            "icon": "[?]",
             "color": Fore.BLUE,
             "dorks": [
                 ("GPS - GPX", "filetype:gpx", "GPS exchange files", "filetype:gpx"),
@@ -486,8 +484,8 @@ class DorkDatabase:
                 ("MapServer", "intitle:MapServer", "MapServer interface", "intitle:MapServer"),
             ]
         },
-        "📡 Network Devices (Routers, Switches)": {
-            "icon": "🌐",
+        "[>] Network Devices (Routers, Switches)": {
+            "icon": "[>]",
             "color": Fore.MAGENTA,
             "dorks": [
                 ("Router - Cisco", "intitle:Cisco inurl:home", "Cisco routers", "intitle:Cisco inurl:home"),
@@ -502,8 +500,8 @@ class DorkDatabase:
                 ("Modem - Arris", "intitle:Arris", "Arris modems", "intitle:Arris"),
             ]
         },
-        "🔐 VPN & Proxy Configs": {
-            "icon": "🔒",
+        "[#] VPN & Proxy Configs": {
+            "icon": "[#]",
             "color": Fore.YELLOW,
             "dorks": [
                 ("OpenVPN Config", "filetype:ovpn", "OpenVPN configs", "filetype:ovpn"),
@@ -518,8 +516,8 @@ class DorkDatabase:
                 ("ExpressVPN", "inurl:expressvpn", "ExpressVPN configs", "inurl:expressvpn"),
             ]
         },
-        "📧 Email & Communication": {
-            "icon": "✉️",
+        "[*] Email & Communication": {
+            "icon": "[*]",
             "color": Fore.RED,
             "dorks": [
                 ("Email - Outlook", "inurl:owa", "Outlook Web Access", "inurl:owa"),
@@ -534,8 +532,8 @@ class DorkDatabase:
                 ("Email - Modoboa", "intitle:Modoboa", "Modoboa", "intitle:Modoboa"),
             ]
         },
-        "🛒 E-commerce & Shopping Carts": {
-            "icon": "🛍️",
+        "[+] E-commerce & Shopping Carts": {
+            "icon": "[+]",
             "color": Fore.GREEN,
             "dorks": [
                 ("WooCommerce", "inurl:wp-content/plugins/woocommerce", "WooCommerce sites", "inurl:wp-content/plugins/woocommerce"),
@@ -550,8 +548,8 @@ class DorkDatabase:
                 ("Weebly Store", "inurl:weebly.com/store", "Weebly stores", "inurl:weebly.com/store"),
             ]
         },
-        "🏥 Healthcare & Medical": {
-            "icon": "🏥",
+        "[?] Healthcare & Medical": {
+            "icon": "[?]",
             "color": Fore.MAGENTA,
             "dorks": [
                 ("Patient Records", "filetype:pdf intext:'patient name'", "Patient PDFs", "filetype:pdf intext:'patient name'"),
@@ -566,8 +564,8 @@ class DorkDatabase:
                 ("Meditech", "inurl:meditech", "Meditech", "inurl:meditech"),
             ]
         },
-        "📁 File Sharing & Cloud Storage": {
-            "icon": "☁️",
+        "[$] File Sharing & Cloud Storage": {
+            "icon": "[$]",
             "color": Fore.CYAN,
             "dorks": [
                 ("Dropbox", "inurl:dropbox.com/s/", "Dropbox shared files", "inurl:dropbox.com/s/"),
@@ -582,8 +580,8 @@ class DorkDatabase:
                 ("Tresorit", "inurl:tresorit.com", "Tresorit", "inurl:tresorit.com"),
             ]
         },
-        "🎓 Education & Academic": {
-            "icon": "🎓",
+        "[&] Education & Academic": {
+            "icon": "[&]",
             "color": Fore.BLUE,
             "dorks": [
                 ("Lecture Notes", "filetype:pdf intext:'lecture notes'", "Lecture PDFs", "filetype:pdf intext:'lecture notes'"),
@@ -598,8 +596,8 @@ class DorkDatabase:
                 ("Blackboard", "intitle:Blackboard inurl:login", "Blackboard", "intitle:Blackboard inurl:login"),
             ]
         },
-        "⚡ SCADA & Industrial Control": {
-            "icon": "🏭",
+        "[!] SCADA & Industrial Control": {
+            "icon": "[!]",
             "color": Fore.RED,
             "dorks": [
                 ("SCADA", "intitle:SCADA", "SCADA interfaces", "intitle:SCADA"),
@@ -614,8 +612,8 @@ class DorkDatabase:
                 ("GE Proficy", "intitle:Proficy", "GE Proficy", "intitle:Proficy"),
             ]
         },
-        "📰 News & Media": {
-            "icon": "📰",
+        "[*] News & Media": {
+            "icon": "[*]",
             "color": Fore.YELLOW,
             "dorks": [
                 ("WordPress News", "inurl:wp-json/wp/v2/posts", "WordPress posts", "inurl:wp-json/wp/v2/posts"),
@@ -630,8 +628,8 @@ class DorkDatabase:
                 ("Al Jazeera", "site:aljazeera.com", "Al Jazeera", "site:aljazeera.com"),
             ]
         },
-        "🔧 Developer & Debugging": {
-            "icon": "🛠️",
+        "[%] Developer & Debugging": {
+            "icon": "[%]",
             "color": Fore.GREEN,
             "dorks": [
                 ("PHPInfo", "filetype:php intext:'phpinfo()'", "PHP info pages", "filetype:php intext:'phpinfo()'"),
@@ -646,8 +644,8 @@ class DorkDatabase:
                 ("Grafana", "intitle:Grafana", "Grafana dashboards", "intitle:Grafana"),
             ]
         },
-        "🕵️ OSINT & People Search": {
-            "icon": "🔍",
+        "[?] OSINT & People Search": {
+            "icon": "[?]",
             "color": Fore.CYAN,
             "dorks": [
                 ("LinkedIn", "site:linkedin.com/in/", "LinkedIn profiles", "site:linkedin.com/in/"),
@@ -662,8 +660,8 @@ class DorkDatabase:
                 ("Discord", "site:discord.com/channels", "Discord invites", "site:discord.com/channels"),
             ]
         },
-        "💰 Financial & Banking": {
-            "icon": "💰",
+        "[@] Financial & Banking": {
+            "icon": "[@]",
             "color": Fore.MAGENTA,
             "dorks": [
                 ("Banking Login", "inurl:onlinebanking", "Online banking portals", "inurl:onlinebanking"),
@@ -678,8 +676,8 @@ class DorkDatabase:
                 ("Stripe", "inurl:stripe.com", "Stripe links", "inurl:stripe.com"),
             ]
         },
-        "🔌 API Endpoints & Swagger": {
-            "icon": "🔌",
+        "[+] API Endpoints & Swagger": {
+            "icon": "[+]",
             "color": Fore.BLUE,
             "dorks": [
                 ("Swagger UI", "inurl:swagger-ui.html", "Swagger interfaces", "inurl:swagger-ui.html"),
@@ -694,8 +692,8 @@ class DorkDatabase:
                 ("OData", "inurl:odata", "OData endpoints", "inurl:odata"),
             ]
         },
-        "🛡️ Security & Vulnerability": {
-            "icon": "🛡️",
+        "[!] Security & Vulnerability": {
+            "icon": "[!]",
             "color": Fore.RED,
             "dorks": [
                 ("CVE List", "filetype:txt intext:CVE-202", "CVE files", "filetype:txt intext:CVE-202"),
@@ -742,7 +740,7 @@ def print_logo():
     tux = f"""{Colors.LOGO}
          _nnnn_                      
         dGGGGMMb     ,"\"\"\"\"\"\"\"\"\"\"\"\""".
-       @p~qp~~qMb    | I Love Tc4dy <3 |
+       @p~qp~~qMb    | I Love Tc4dy [<3] |
        M|@||@) M|   _;..............'
        @,----.JM| -'
       JS^\\__/  qKL
@@ -759,7 +757,7 @@ _)      \\.___.,|     .'
 
     logo = f"""
 {Colors.LOGO}
-══════════════════════════════════════════════════════════════════════════════
+[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]
                             MR. DORK                               
             The Advanced Dork Search Engine for Analysts          
                                                                               
@@ -767,10 +765,10 @@ _)      \\.___.,|     .'
                                            
   Total Dorks: {str(DorkDatabase.get_total_dorks()).ljust(5)} Google Dorks                                        
   Categories: {str(len(DorkDatabase.CATEGORIES)).ljust(3)}                                                         
-══════════════════════════════════════════════════════════════════════════════
+[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]
 {Colors.RESET}
-{Colors.WARNING}⚠️  ETHICAL USE WARNING: This tool is for educational and legal testing only!{Colors.RESET}
-{Colors.ERROR}⚠️  Unauthorized system access is illegal and can have serious consequences!{Colors.RESET}
+{Colors.WARNING}[!] ETHICAL USE WARNING: This tool is for educational and legal testing only!{Colors.RESET}
+{Colors.ERROR}[!] Unauthorized system access is illegal and can have serious consequences!{Colors.RESET}
 """
     print(tux)
     print(logo)
@@ -790,15 +788,15 @@ class MrDorkApp:
             print_logo()
             stats = self.db.get_stats()
             
-            print(f"{Colors.STATS}📊 STATS: Total Searches: {stats['total_searches']} | Favorites: {stats['favorite_count']}")
-            print(f"─" * 80)
-            print(f"{Colors.MENU}1. 📂 Browse Categories")
-            print(f"{Colors.MENU}2. 🔍 Search Dorks")
-            print(f"{Colors.MENU}3. ⭐ View Favorites")
-            print(f"{Colors.MENU}4. 📜 Search History")
-            print(f"{Colors.MENU}5. 🛠️  Custom Dorks")
-            print(f"{Colors.MENU}0. ❌ Exit")
-            print(f"─" * 80)
+            print(f"{Colors.STATS}[+] STATS: Total Searches: {stats['total_searches']} | Favorites: {stats['favorite_count']}")
+            print(f"[-]" * 40)
+            print(f"{Colors.MENU}1. [*] Browse Categories")
+            print(f"{Colors.MENU}2. [?] Search Dorks")
+            print(f"{Colors.MENU}3. [$] View Favorites")
+            print(f"{Colors.MENU}4. [&] Search History")
+            print(f"{Colors.MENU}5. [%] Custom Dorks")
+            print(f"{Colors.MENU}0. [!] Exit")
+            print(f"[-]" * 40)
             
             choice = input(f"{Colors.INFO}Select an option: {Colors.RESET}")
             
@@ -813,17 +811,17 @@ class MrDorkApp:
             elif choice == "5":
                 self.custom_dorks_menu()
             elif choice == "0":
-                print(f"{Colors.SUCCESS}\nStay safe! Goodbye...{Colors.RESET}")
+                print(f"{Colors.SUCCESS}[+] Stay safe! Goodbye...{Colors.RESET}")
                 self.running = False
             else:
-                print(f"{Colors.ERROR}Invalid selection!{Colors.RESET}")
+                print(f"{Colors.ERROR}[!] Invalid selection!{Colors.RESET}")
                 time.sleep(1)
 
     def browse_categories(self):
         while True:
             self.clear_screen()
             print_logo()
-            print(f"{Colors.HEADER}📂 CATEGORIES\n")
+            print(f"{Colors.HEADER}[*] CATEGORIES [+]\n")
             
             categories = DorkDatabase.get_all_categories()
             for i, cat in enumerate(categories, 1):
@@ -850,16 +848,16 @@ class MrDorkApp:
         
         while True:
             self.clear_screen()
-            print(f"{Colors.HEADER}📂 CATEGORY: {category_name}")
-            print("═" * 80)
+            print(f"{Colors.HEADER}[*] CATEGORY: {category_name}")
+            print("[=]" * 40)
             
             for i, (name, query, desc, example) in enumerate(dorks, 1):
                 print(f"{Colors.SUCCESS}{i}. {name}")
                 print(f"   {Colors.INFO}Description: {desc}")
                 print(f"   {Colors.DORK}Dork: {query}")
-                print("-" * 40)
+                print("[-]" * 20)
             
-            print(f"{Colors.WARNING}⚡ Type 'all' to run EVERY dork in this category (sequential){Colors.RESET}")
+            print(f"{Colors.WARNING}[+] Type 'all' to run EVERY dork in this category (sequential){Colors.RESET}")
             print(f"{Colors.MENU}0. Back")
             
             choice = input(f"\n{Colors.INFO}Select a dork number, 'all', or 0: {Colors.RESET}").strip().lower()
@@ -874,20 +872,19 @@ class MrDorkApp:
                     if 0 <= idx < len(dorks):
                         self.execute_dork(dorks[idx], category_name)
                 except ValueError:
-                    print(f"{Colors.ERROR}Invalid input. Please enter a number, 'all', or 0.{Colors.RESET}")
+                    print(f"{Colors.ERROR}[!] Invalid input. Please enter a number, 'all', or 0.{Colors.RESET}")
                     time.sleep(1)
 
     def execute_all_dorks(self, dorks: List[Tuple], category: str):
-        """Run all dorks in the current category sequentially"""
         self.clear_screen()
-        print(f"{Colors.HEADER}⚡ RUNNING ALL DORKS IN: {category}")
-        print("═" * 80)
+        print(f"{Colors.HEADER}[+] RUNNING ALL DORKS IN: {category}")
+        print("[=]" * 40)
         print(f"{Colors.WARNING}This will open {len(dorks)} Google searches one after another.{Colors.RESET}")
         print(f"{Colors.WARNING}You can close the browser tabs as they open, or let them run.{Colors.RESET}")
         confirm = input(f"{Colors.INFO}Type 'yes' to continue, anything else to cancel: {Colors.RESET}").strip().lower()
         
         if confirm != "yes":
-            print(f"{Colors.ERROR}Cancelled.{Colors.RESET}")
+            print(f"{Colors.ERROR}[!] Cancelled.{Colors.RESET}")
             time.sleep(1)
             return
         
@@ -902,14 +899,14 @@ class MrDorkApp:
             self.db.add_to_history(final_query, category)
             time.sleep(0.5)
         
-        print(f"{Colors.SUCCESS}\n✅ All {len(dorks)} dorks executed!{Colors.RESET}")
+        print(f"{Colors.SUCCESS}[+] All {len(dorks)} dorks executed!{Colors.RESET}")
         input(f"{Colors.INFO}Press Enter to return...{Colors.RESET}")
 
     def execute_dork(self, dork_data, category):
         name, query, desc, example = dork_data
         self.clear_screen()
-        print(f"{Colors.HEADER}🚀 EXECUTING: {name}")
-        print("═" * 80)
+        print(f"{Colors.HEADER}[+] EXECUTING: {name}")
+        print("[=]" * 40)
         print(f"{Colors.INFO}Example usage: {example}")
         target = input(f"{Colors.QUERY}Enter target (e.g. site:com or keyword): {Colors.RESET}")
         
@@ -919,8 +916,8 @@ class MrDorkApp:
         encoded_query = urllib.parse.quote(final_query)
         url = f"https://www.google.com/search?q={encoded_query}"
         
-        print(f"\n{Colors.MENU}1. 🌐 Open in Browser")
-        print(f"{Colors.MENU}2. ⭐ Save to Favorites")
+        print(f"\n{Colors.MENU}1. [*] Open in Browser")
+        print(f"{Colors.MENU}2. [$] Save to Favorites")
         print(f"{Colors.MENU}0. Cancel")
         
         choice = input(f"\n{Colors.INFO}Selection: {Colors.RESET}")
@@ -930,24 +927,24 @@ class MrDorkApp:
             self.db.add_to_history(final_query, category)
         elif choice == "2":
             if self.db.add_favorite(category, name, final_query, example, desc):
-                print(f"{Colors.SUCCESS}Added to favorites!{Colors.RESET}")
+                print(f"{Colors.SUCCESS}[+] Added to favorites!{Colors.RESET}")
                 time.sleep(1)
 
     def search_screen(self):
         self.clear_screen()
-        print(f"{Colors.HEADER}🔍 GLOBAL SEARCH")
+        print(f"{Colors.HEADER}[?] GLOBAL SEARCH")
         keyword = input(f"{Colors.INFO}Enter search term: {Colors.RESET}")
         
         results = DorkDatabase.search_dorks(keyword)
         if not results:
-            print(f"{Colors.ERROR}No dorks found matching your search.{Colors.RESET}")
+            print(f"{Colors.ERROR}[!] No dorks found matching your search.{Colors.RESET}")
             time.sleep(1)
             return
 
         while True:
             self.clear_screen()
-            print(f"{Colors.HEADER}🔎 SEARCH RESULTS for '{keyword}'")
-            print("═" * 80)
+            print(f"{Colors.HEADER}[?] SEARCH RESULTS for '{keyword}'")
+            print("[=]" * 40)
             for i, (cat, name, query, desc, ex) in enumerate(results, 1):
                 print(f"{Colors.SUCCESS}{i}. [{cat}] {name}")
                 print(f"   {Colors.DORK}{query}")
@@ -966,10 +963,10 @@ class MrDorkApp:
         while True:
             favs = self.db.get_favorites()
             self.clear_screen()
-            print(f"{Colors.HEADER}⭐ FAVORITE DORKS")
-            print("═" * 80)
+            print(f"{Colors.HEADER}[$] FAVORITE DORKS")
+            print("[=]" * 40)
             if not favs:
-                print(f"{Colors.ERROR}Your favorites list is empty.{Colors.RESET}")
+                print(f"{Colors.ERROR}[!] Your favorites list is empty.{Colors.RESET}")
                 input(f"\n{Colors.INFO}Press Enter to return...{Colors.RESET}")
                 break
             
@@ -991,10 +988,10 @@ class MrDorkApp:
     def view_history(self):
         history = self.db.get_history()
         self.clear_screen()
-        print(f"{Colors.HEADER}📜 SEARCH HISTORY")
-        print("═" * 80)
+        print(f"{Colors.HEADER}[&] SEARCH HISTORY")
+        print("[=]" * 40)
         if not history:
-            print(f"{Colors.ERROR}History is empty.{Colors.RESET}")
+            print(f"{Colors.ERROR}[!] History is empty.{Colors.RESET}")
         else:
             for h in history:
                 print(f"{Colors.INFO}[{h[2]}] {Colors.SUCCESS}{h[1]} {Colors.RESET}>> {h[0]}")
@@ -1004,16 +1001,16 @@ class MrDorkApp:
         choice = input(f"\n{Colors.INFO}Selection: {Colors.RESET}")
         if choice == "1":
             self.db.clear_history()
-            print(f"{Colors.SUCCESS}History cleared!{Colors.RESET}")
+            print(f"{Colors.SUCCESS}[+] History cleared!{Colors.RESET}")
             time.sleep(1)
 
     def custom_dorks_menu(self):
         while True:
             self.clear_screen()
-            print(f"{Colors.HEADER}🛠️  CUSTOM DORKS")
-            print("═" * 80)
-            print(f"{Colors.MENU}1. ➕ Add Custom Dork")
-            print(f"{Colors.MENU}2. 📂 View Custom Dorks")
+            print(f"{Colors.HEADER}[%] CUSTOM DORKS")
+            print("[=]" * 40)
+            print(f"{Colors.MENU}1. [+] Add Custom Dork")
+            print(f"{Colors.MENU}2. [*] View Custom Dorks")
             print(f"{Colors.MENU}0. Back")
             
             choice = input(f"\n{Colors.INFO}Selection: {Colors.RESET}")
@@ -1024,12 +1021,12 @@ class MrDorkApp:
                 query = input(f"{Colors.QUERY}Dork Query: {Colors.RESET}")
                 desc = input(f"{Colors.QUERY}Description: {Colors.RESET}")
                 if self.db.add_custom_dork(name, query, desc):
-                    print(f"{Colors.SUCCESS}Saved successfully!{Colors.RESET}")
+                    print(f"{Colors.SUCCESS}[+] Saved successfully!{Colors.RESET}")
                 time.sleep(1)
             elif choice == "2":
                 customs = self.db.get_custom_dorks()
                 self.clear_screen()
-                print(f"{Colors.HEADER}📂 YOUR CUSTOM DORKS")
+                print(f"{Colors.HEADER}[*] YOUR CUSTOM DORKS")
                 for c in customs:
                     print(f"{Colors.SUCCESS}{c[1]}: {Colors.DORK}{c[2]}")
                 input(f"\n{Colors.INFO}Press Enter to return...{Colors.RESET}")
@@ -1039,5 +1036,5 @@ if __name__ == "__main__":
     try:
         app.main_menu()
     except KeyboardInterrupt:
-        print(f"\n{Colors.ERROR}Process terminated by user.{Colors.RESET}")
+        print(f"\n{Colors.ERROR}[!] Process terminated by user.{Colors.RESET}")
         sys.exit()
