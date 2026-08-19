@@ -25,7 +25,7 @@ print_logo() {
     echo -e "\033[36;1m"
     echo "         _nnnn_                      "
     echo "        dGGGGMMb     ,\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"."
-    echo "       @p~qp~~qMb    | I Love Tc4dy <3 |"
+    echo "       @p~qp~~qMb    | I Love Tc4dy [<3] |"
     echo "       M|@||@) M|   _;..............'"
     echo "       @,----.JM| -'"
     echo "      JS^\\__/  qKL"
@@ -41,7 +41,7 @@ print_logo() {
     echo "     \`-'       \`--'"
     echo -e "\033[0m"
     echo -e "\033[36;1m"
-    echo "══════════════════════════════════════════════════════════════════════════════"
+    echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
     echo "                            MR. DORK                               "
     echo "            The Advanced Dork Search Engine for Analysts          "
     echo "                                                                              "
@@ -49,10 +49,10 @@ print_logo() {
     echo "                                            "
     echo "  Total Dorks: 302  Google Dorks                                        "
     echo "  Categories: 52                                                         "
-    echo "══════════════════════════════════════════════════════════════════════════════"
+    echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
     echo -e "\033[0m"
-    echo -e "\033[33;1m⚠️  ETHICAL USE WARNING: This tool is for educational and legal testing only!\033[0m"
-    echo -e "\033[31;1m⚠️  Unauthorized system access is illegal and can have serious consequences!\033[0m"
+    echo -e "\033[33;1m[!] ETHICAL USE WARNING: This tool is for educational and legal testing only!\033[0m"
+    echo -e "\033[31;1m[!] Unauthorized system access is illegal and can have serious consequences!\033[0m"
     echo ""
 }
 
@@ -67,7 +67,7 @@ get_stats() {
     FAVS=$(sqlite3 "$DATABASE_FILE" "SELECT favorite_count FROM statistics WHERE id = 1;" 2>/dev/null)
     [ -z "$TOTAL" ] && TOTAL=0
     [ -z "$FAVS" ] && FAVS=0
-    echo "📊 STATS: Total Searches: $TOTAL | Favorites: $FAVS"
+    echo "[+] STATS: Total Searches: $TOTAL | Favorites: $FAVS"
 }
 
 add_favorite() {
@@ -84,59 +84,59 @@ add_custom_dork() {
 }
 
 show_categories() {
-    echo -e "\033[35;1m📂 CATEGORIES\n\033[0m"
-    echo "1.  📁 PDF Documents"
-    echo "2.  📊 Excel & Spreadsheets"
-    echo "3.  📝 Word Documents"
-    echo "4.  💾 Database Files"
-    echo "5.  📜 Log Files"
-    echo "6.  💼 Backup Files"
-    echo "7.  🔐 Admin Panels"
-    echo "8.  🔑 Login Pages"
-    echo "9.  🗄️ phpMyAdmin"
-    echo "10. ⚙️ cPanel & WHM"
-    echo "11. 📂 Open Directories"
-    echo "12. 📤 Upload Directories"
-    echo "13. ⚙️ Config Directories"
-    echo "14. 🔑 Passwords"
-    echo "15. 🔐 API Keys"
-    echo "16. 📋 Config Files"
-    echo "17. 📡 IoT & Camera Feeds"
-    echo "18. 📊 Public Analytics & Stats"
-    echo "19. 🔍 Git & Version Control"
-    echo "20. 🌍 Geo-location & Maps"
-    echo "21. 📡 Network Devices"
-    echo "22. 🔐 VPN & Proxy Configs"
-    echo "23. 📧 Email & Communication"
-    echo "24. 🛒 E-commerce"
-    echo "25. 🏥 Healthcare & Medical"
-    echo "26. 📁 File Sharing & Cloud Storage"
-    echo "27. 🎓 Education & Academic"
-    echo "28. ⚡ SCADA & Industrial Control"
-    echo "29. 📰 News & Media"
-    echo "30. 🔧 Developer & Debugging"
-    echo "31. 🕵️ OSINT & People Search"
-    echo "32. 💰 Financial & Banking"
-    echo "33. 🔌 API Endpoints & Swagger"
-    echo "34. 🛡️ Security & Vulnerability"
-    echo "35. 🗂️ Archives & Compressed Files"
-    echo "36. 📱 Mobile Apps & Configs"
-    echo "37. 🔍 Source Code & Repositories"
-    echo "38. 🖥️ Server Status Pages"
-    echo "39. 📊 Dashboard & Monitoring"
-    echo "40. 🔌 Network Shares & NAS"
-    echo "41. 🏢 Corporate & Business"
-    echo "42. 📋 Legal & Compliance"
-    echo "43. 🏗️ Construction & Engineering"
-    echo "44. 🚗 Automotive & Vehicles"
-    echo "45. 🏨 Hospitality & Travel"
-    echo "46. 🎮 Gaming & Entertainment"
-    echo "47. 📚 Libraries & Publishing"
-    echo "48. 🏛️ Government & Public Sector"
-    echo "49. 🌱 Agriculture & Environment"
-    echo "50. 💊 Pharmaceuticals & Drugs"
-    echo "51. 🔬 Science & Research"
-    echo "52. 🏢 Real Estate & Property"
+    echo -e "\033[35;1m[*] CATEGORIES [+]\n\033[0m"
+    echo "1.  [*] PDF Documents"
+    echo "2.  [&] Excel & Spreadsheets"
+    echo "3.  [#] Word Documents"
+    echo "4.  [$] Database Files"
+    echo "5.  [+] Log Files"
+    echo "6.  [%] Backup Files"
+    echo "7.  [!] Admin Panels"
+    echo "8.  [@] Login Pages"
+    echo "9.  [?] phpMyAdmin"
+    echo "10. [>] cPanel & WHM"
+    echo "11. [<] Open Directories"
+    echo "12. [/] Upload Directories"
+    echo "13. [=] Config Directories"
+    echo "14. [#] Passwords"
+    echo "15. [$] API Keys"
+    echo "16. [&] Config Files"
+    echo "17. [+] IoT & Camera Feeds"
+    echo "18. [*] Public Analytics & Stats"
+    echo "19. [@] Git & Version Control"
+    echo "20. [?] Geo-location & Maps"
+    echo "21. [>] Network Devices"
+    echo "22. [#] VPN & Proxy Configs"
+    echo "23. [*] Email & Communication"
+    echo "24. [+] E-commerce"
+    echo "25. [?] Healthcare & Medical"
+    echo "26. [$] File Sharing & Cloud Storage"
+    echo "27. [&] Education & Academic"
+    echo "28. [!] SCADA & Industrial Control"
+    echo "29. [*] News & Media"
+    echo "30. [%] Developer & Debugging"
+    echo "31. [?] OSINT & People Search"
+    echo "32. [@] Financial & Banking"
+    echo "33. [+] API Endpoints & Swagger"
+    echo "34. [!] Security & Vulnerability"
+    echo "35. [&] Archives & Compressed Files"
+    echo "36. [#] Mobile Apps & Configs"
+    echo "37. [@] Source Code & Repositories"
+    echo "38. [*] Server Status Pages"
+    echo "39. [+] Dashboard & Monitoring"
+    echo "40. [>] Network Shares & NAS"
+    echo "41. [&] Corporate & Business"
+    echo "42. [#] Legal & Compliance"
+    echo "43. [%] Construction & Engineering"
+    echo "44. [$] Automotive & Vehicles"
+    echo "45. [*] Hospitality & Travel"
+    echo "46. [!] Gaming & Entertainment"
+    echo "47. [?] Libraries & Publishing"
+    echo "48. [@] Government & Public Sector"
+    echo "49. [+] Agriculture & Environment"
+    echo "50. [&] Pharmaceuticals & Drugs"
+    echo "51. [#] Science & Research"
+    echo "52. [%] Real Estate & Property"
     echo ""
     echo "0. Back to Main Menu"
 }
@@ -602,8 +602,8 @@ execute_dork() {
     IFS='|' read -r QUERY NAME DESC EXAMPLE <<< "$1"
     
     clear
-    echo -e "\033[35;1m🚀 EXECUTING: $NAME\033[0m"
-    echo "══════════════════════════════════════════════════════════════════════════════"
+    echo -e "\033[35;1m[+] EXECUTING: $NAME\033[0m"
+    echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
     echo -e "\033[34;1mExample usage: $EXAMPLE\033[0m"
     echo -n -e "\033[33;1mEnter target (e.g. site:com or keyword): \033[0m"
     read TARGET
@@ -617,8 +617,8 @@ execute_dork() {
     URL="https://www.google.com/search?q=$ENC_QUERY"
     
     echo ""
-    echo -e "\033[37;1m1. 🌐 Open in Browser\033[0m"
-    echo -e "\033[37;1m2. ⭐ Save to Favorites\033[0m"
+    echo -e "\033[37;1m1. [*] Open in Browser\033[0m"
+    echo -e "\033[37;1m2. [$] Save to Favorites\033[0m"
     echo -e "\033[37;1m0. Cancel\033[0m"
     
     echo -n -e "\n\033[34;1mSelection: \033[0m"
@@ -642,7 +642,7 @@ browse_categories() {
         clear
         print_logo
         get_stats
-        echo "────────────────────────────────────────────────────────────────────────────────"
+        echo "[-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]"
         show_categories
         
         echo -n -e "\n\033[34;1mSelect category (or 0): \033[0m"
@@ -669,8 +669,8 @@ view_dorks() {
         CAT_NAMES=("PDF Documents" "Excel & Spreadsheets" "Word Documents" "Database Files" "Log Files" "Backup Files" "Admin Panels" "Login Pages" "phpMyAdmin" "cPanel & WHM" "Open Directories" "Upload Directories" "Config Directories" "Passwords" "API Keys" "Config Files" "IoT & Camera Feeds" "Public Analytics & Stats" "Git & Version Control" "Geo-location & Maps" "Network Devices" "VPN & Proxy Configs" "Email & Communication" "E-commerce" "Healthcare & Medical" "File Sharing & Cloud Storage" "Education & Academic" "SCADA & Industrial Control" "News & Media" "Developer & Debugging" "OSINT & People Search" "Financial & Banking" "API Endpoints & Swagger" "Security & Vulnerability" "Archives & Compressed Files" "Mobile Apps & Configs" "Source Code & Repositories" "Server Status Pages" "Dashboard & Monitoring" "Network Shares & NAS" "Corporate & Business" "Legal & Compliance" "Construction & Engineering" "Automotive & Vehicles" "Hospitality & Travel" "Gaming & Entertainment" "Libraries & Publishing" "Government & Public Sector" "Agriculture & Environment" "Pharmaceuticals & Drugs" "Science & Research" "Real Estate & Property")
         CATEGORY_NAME="${CAT_NAMES[$((CAT_NUM-1))]}"
         
-        echo -e "\033[35;1m📂 CATEGORY: $CATEGORY_NAME\033[0m"
-        echo "══════════════════════════════════════════════════════════════════════════════"
+        echo -e "\033[35;1m[*] CATEGORY: $CATEGORY_NAME\033[0m"
+        echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
         
         IFS=$'\n'
         IDX=1
@@ -679,11 +679,11 @@ view_dorks() {
             echo -e "\033[32;1m$IDX. $N\033[0m"
             echo "   \033[34;1mDescription: $D\033[0m"
             echo "   \033[36;1mDork: $Q\033[0m"
-            echo "----------------------------------------"
+            echo "[-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]"
             IDX=$((IDX+1))
         done
         
-        echo -e "\033[33;1m⚡ Type 'all' to run EVERY dork in this category (sequential)\033[0m"
+        echo -e "\033[33;1m[+] Type 'all' to run EVERY dork in this category (sequential)\033[0m"
         echo -e "\033[37;1m0. Back\033[0m"
         
         echo -n -e "\n\033[34;1mSelect a dork number, 'all', or 0: \033[0m"
@@ -710,7 +710,7 @@ view_dorks() {
                     IDX=$((IDX+1))
                     sleep 0.5
                 done
-                echo -e "\033[32;1m✅ All $DORK_COUNT dorks executed!\033[0m"
+                echo -e "\033[32;1m[+] All $DORK_COUNT dorks executed!\033[0m"
                 echo -n -e "\033[34;1mPress Enter to return...\033[0m"
                 read
             fi
@@ -723,7 +723,7 @@ view_dorks() {
 
 search_dorks() {
     clear
-    echo -e "\033[35;1m🔍 GLOBAL SEARCH\033[0m"
+    echo -e "\033[35;1m[?] GLOBAL SEARCH\033[0m"
     echo -n -e "\033[34;1mEnter search term: \033[0m"
     read KEYWORD
     
@@ -748,8 +748,8 @@ search_dorks() {
     
     while true; do
         clear
-        echo -e "\033[35;1m🔎 SEARCH RESULTS for '$KEYWORD'\033[0m"
-        echo "══════════════════════════════════════════════════════════════════════════════"
+        echo -e "\033[35;1m[?] SEARCH RESULTS for '$KEYWORD'\033[0m"
+        echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
         
         IFS=$'\n'
         IDX=1
@@ -779,8 +779,8 @@ view_favorites() {
         FAVS=$(sqlite3 "$DATABASE_FILE" "SELECT category, name, query FROM favorites ORDER BY added_date DESC;" 2>/dev/null)
         
         clear
-        echo -e "\033[35;1m⭐ FAVORITE DORKS\033[0m"
-        echo "══════════════════════════════════════════════════════════════════════════════"
+        echo -e "\033[35;1m[$] FAVORITE DORKS\033[0m"
+        echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
         
         if [ -z "$FAVS" ]; then
             echo -e "\033[31;1mYour favorites list is empty.\033[0m"
@@ -818,8 +818,8 @@ view_history() {
     HISTORY=$(sqlite3 "$DATABASE_FILE" "SELECT query, category, search_date FROM search_history ORDER BY search_date DESC LIMIT 50;" 2>/dev/null)
     
     clear
-    echo -e "\033[35;1m📜 SEARCH HISTORY\033[0m"
-    echo "══════════════════════════════════════════════════════════════════════════════"
+    echo -e "\033[35;1m[&] SEARCH HISTORY\033[0m"
+    echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
     
     if [ -z "$HISTORY" ]; then
         echo -e "\033[31;1mHistory is empty.\033[0m"
@@ -847,10 +847,10 @@ view_history() {
 custom_dorks_menu() {
     while true; do
         clear
-        echo -e "\033[35;1m🛠️  CUSTOM DORKS\033[0m"
-        echo "══════════════════════════════════════════════════════════════════════════════"
-        echo -e "\033[37;1m1. ➕ Add Custom Dork\033[0m"
-        echo -e "\033[37;1m2. 📂 View Custom Dorks\033[0m"
+        echo -e "\033[35;1m[%] CUSTOM DORKS\033[0m"
+        echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
+        echo -e "\033[37;1m1. [+] Add Custom Dork\033[0m"
+        echo -e "\033[37;1m2. [*] View Custom Dorks\033[0m"
         echo -e "\033[37;1m0. Back\033[0m"
         
         echo -n -e "\n\033[34;1mSelection: \033[0m"
@@ -871,7 +871,7 @@ custom_dorks_menu() {
         elif [ "$CHOICE" = "2" ]; then
             CUSTOMS=$(sqlite3 "$DATABASE_FILE" "SELECT name, query, description FROM custom_dorks ORDER BY created_date DESC;" 2>/dev/null)
             clear
-            echo -e "\033[35;1m📂 YOUR CUSTOM DORKS\033[0m"
+            echo -e "\033[35;1m[*] YOUR CUSTOM DORKS\033[0m"
             if [ -z "$CUSTOMS" ]; then
                 echo -e "\033[31;1mNo custom dorks found.\033[0m"
             else
@@ -894,14 +894,14 @@ main_menu() {
     while true; do
         print_logo
         get_stats
-        echo "────────────────────────────────────────────────────────────────────────────────"
-        echo -e "\033[37;1m1. 📂 Browse Categories\033[0m"
-        echo -e "\033[37;1m2. 🔍 Search Dorks\033[0m"
-        echo -e "\033[37;1m3. ⭐ View Favorites\033[0m"
-        echo -e "\033[37;1m4. 📜 Search History\033[0m"
-        echo -e "\033[37;1m5. 🛠️  Custom Dorks\033[0m"
-        echo -e "\033[37;1m0. ❌ Exit\033[0m"
-        echo "────────────────────────────────────────────────────────────────────────────────"
+        echo "[-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]"
+        echo -e "\033[37;1m1. [*] Browse Categories\033[0m"
+        echo -e "\033[37;1m2. [?] Search Dorks\033[0m"
+        echo -e "\033[37;1m3. [$] View Favorites\033[0m"
+        echo -e "\033[37;1m4. [&] Search History\033[0m"
+        echo -e "\033[37;1m5. [%] Custom Dorks\033[0m"
+        echo -e "\033[37;1m0. [!] Exit\033[0m"
+        echo "[-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]"
         
         echo -n -e "\n\033[34;1mSelect an option: \033[0m"
         read MAIN_CHOICE
