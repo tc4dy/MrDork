@@ -47,8 +47,8 @@ print_logo() {
     echo "                                                                              "
     echo "                        Developer: @tc4dy                                                   "
     echo "                                            "
-    echo "  Total Dorks: 448  Google Dorks                                        "
-    echo "  Categories: 28                                                         "
+    echo "  Total Dorks: 302  Google Dorks                                        "
+    echo "  Categories: 52                                                         "
     echo "══════════════════════════════════════════════════════════════════════════════"
     echo -e "\033[0m"
     echo -e "\033[33;1m⚠️  ETHICAL USE WARNING: This tool is for educational and legal testing only!\033[0m"
@@ -110,9 +110,33 @@ show_categories() {
     echo "23. 📧 Email & Communication"
     echo "24. 🛒 E-commerce"
     echo "25. 🏥 Healthcare & Medical"
-    echo "26. 📁 File Sharing"
+    echo "26. 📁 File Sharing & Cloud Storage"
     echo "27. 🎓 Education & Academic"
-    echo "28. 🔧 Developer & Debugging"
+    echo "28. ⚡ SCADA & Industrial Control"
+    echo "29. 📰 News & Media"
+    echo "30. 🔧 Developer & Debugging"
+    echo "31. 🕵️ OSINT & People Search"
+    echo "32. 💰 Financial & Banking"
+    echo "33. 🔌 API Endpoints & Swagger"
+    echo "34. 🛡️ Security & Vulnerability"
+    echo "35. 🗂️ Archives & Compressed Files"
+    echo "36. 📱 Mobile Apps & Configs"
+    echo "37. 🔍 Source Code & Repositories"
+    echo "38. 🖥️ Server Status Pages"
+    echo "39. 📊 Dashboard & Monitoring"
+    echo "40. 🔌 Network Shares & NAS"
+    echo "41. 🏢 Corporate & Business"
+    echo "42. 📋 Legal & Compliance"
+    echo "43. 🏗️ Construction & Engineering"
+    echo "44. 🚗 Automotive & Vehicles"
+    echo "45. 🏨 Hospitality & Travel"
+    echo "46. 🎮 Gaming & Entertainment"
+    echo "47. 📚 Libraries & Publishing"
+    echo "48. 🏛️ Government & Public Sector"
+    echo "49. 🌱 Agriculture & Environment"
+    echo "50. 💊 Pharmaceuticals & Drugs"
+    echo "51. 🔬 Science & Research"
+    echo "52. 🏢 Real Estate & Property"
     echo ""
     echo "0. Back to Main Menu"
 }
@@ -357,7 +381,27 @@ get_dorks_by_category() {
             echo "intitle:Moodle inurl:login|Moodle|Moodle LMS|intitle:Moodle inurl:login"
             echo "intitle:Canvas inurl:login|Canvas LMS|Canvas LMS|intitle:Canvas inurl:login"
             echo "intitle:Blackboard inurl:login|Blackboard|Blackboard|intitle:Blackboard inurl:login";;
-        28) echo "filetype:php intext:'phpinfo()'|PHPInfo|PHP info pages|filetype:php intext:'phpinfo()'"
+        28) echo "intitle:SCADA|SCADA|SCADA interfaces|intitle:SCADA"
+            echo "intitle:PLC|PLC|PLC panels|intitle:PLC"
+            echo "intitle:HMI|HMI|HMI interfaces|intitle:HMI"
+            echo "intitle:Wonderware|Wonderware|Wonderware|intitle:Wonderware"
+            echo "intitle:Siemens inurl:web|Siemens|Siemens controllers|intitle:Siemens inurl:web"
+            echo "intitle:Rockwell inurl:web|Rockwell|Rockwell|intitle:Rockwell inurl:web"
+            echo "intitle:Modbus|Modbus|Modbus devices|intitle:Modbus"
+            echo "intitle:OPC|OPC|OPC servers|intitle:OPC"
+            echo "intitle:Citect|Citect|Citect SCADA|intitle:Citect"
+            echo "intitle:Proficy|GE Proficy|GE Proficy|intitle:Proficy";;
+        29) echo "inurl:wp-json/wp/v2/posts|WordPress News|WordPress posts|inurl:wp-json/wp/v2/posts"
+            echo "filetype:rss|RSS Feed|RSS feeds|filetype:rss"
+            echo "filetype:atom|Atom Feed|Atom feeds|filetype:atom"
+            echo "inurl:sitemap.xml|Sitemap|XML sitemaps|inurl:sitemap.xml"
+            echo "intext:'newsapi.org'|News API|News API keys|intext:'newsapi.org'"
+            echo "site:cnn.com inurl:news|CNN|CNN news|site:cnn.com inurl:news"
+            echo "site:bbc.com inurl:news|BBC|BBC news|site:bbc.com inurl:news"
+            echo "site:reuters.com inurl:article|Reuters|Reuters|site:reuters.com inurl:article"
+            echo "site:apnews.com|AP News|AP News|site:apnews.com"
+            echo "site:aljazeera.com|Al Jazeera|Al Jazeera|site:aljazeera.com";;
+        30) echo "filetype:php intext:'phpinfo()'|PHPInfo|PHP info pages|filetype:php intext:'phpinfo()'"
             echo "intitle:'Debug Bar'|Debug Bar|Debug bars|intitle:'Debug Bar'"
             echo "inurl:_debugbar|Laravel Debug|Laravel debug|inurl:_debugbar"
             echo "inurl:debug_toolbar|Django Debug|Django debug|inurl:debug_toolbar"
@@ -367,6 +411,190 @@ get_dorks_by_category() {
             echo "inurl:elasticsearch/_nodes|ElasticSearch|ElasticSearch nodes|inurl:elasticsearch/_nodes"
             echo "intitle:Kibana|Kibana|Kibana dashboards|intitle:Kibana"
             echo "intitle:Grafana|Grafana|Grafana dashboards|intitle:Grafana";;
+        31) echo "site:linkedin.com/in/|LinkedIn|LinkedIn profiles|site:linkedin.com/in/"
+            echo "site:twitter.com inurl:status|Twitter|Tweets|site:twitter.com inurl:status"
+            echo "site:facebook.com inurl:profile.php|Facebook|FB profiles|site:facebook.com inurl:profile.php"
+            echo "site:instagram.com/p/|Instagram|Instagram posts|site:instagram.com/p/"
+            echo "site:github.com inurl:repositories|GitHub|GitHub repos|site:github.com inurl:repositories"
+            echo "site:reddit.com inurl:comments|Reddit|Reddit comments|site:reddit.com inurl:comments"
+            echo "site:youtube.com inurl:watch|YouTube|YouTube videos|site:youtube.com inurl:watch"
+            echo "site:tiktok.com inurl:video|TikTok|TikTok videos|site:tiktok.com inurl:video"
+            echo "site:t.me|Telegram|Telegram channels|site:t.me"
+            echo "site:discord.com/channels|Discord|Discord invites|site:discord.com/channels";;
+        32) echo "inurl:onlinebanking|Banking Login|Online banking portals|inurl:onlinebanking"
+            echo "filetype:pdf intext:'credit card'|Credit Card|Credit card statements|filetype:pdf intext:'credit card'"
+            echo "filetype:pdf intext:invoice|Invoice|Invoices|filetype:pdf intext:invoice"
+            echo "filetype:xlsx intext:payroll|Payroll|Payroll sheets|filetype:xlsx intext:payroll"
+            echo "filetype:pdf intext:'tax return'|Tax Return|Tax returns|filetype:pdf intext:'tax return'"
+            echo "filetype:pdf intext:'loan application'|Loan Application|Loan apps|filetype:pdf intext:'loan application'"
+            echo "filetype:pdf intext:'bank statement'|Bank Statement|Bank statements|filetype:pdf intext:'bank statement'"
+            echo "filetype:pdf intext:investment|Investment|Investment docs|filetype:pdf intext:investment"
+            echo "inurl:paypal.com|PayPal|PayPal links|inurl:paypal.com"
+            echo "inurl:stripe.com|Stripe|Stripe links|inurl:stripe.com";;
+        33) echo "inurl:swagger-ui.html|Swagger UI|Swagger interfaces|inurl:swagger-ui.html"
+            echo "filetype:json intext:'swagger'|OpenAPI JSON|OpenAPI specs|filetype:json intext:'swagger'"
+            echo "inurl:api/docs|API Docs|API documentation|inurl:api/docs"
+            echo "filetype:json intext:'postman'|Postman Collection|Postman collections|filetype:json intext:'postman'"
+            echo "inurl:graphql|GraphQL|GraphQL endpoints|inurl:graphql"
+            echo "inurl:api/|REST API|REST API endpoints|inurl:api/"
+            echo "intext:'application/json' inurl:api|JSON API|JSON APIs|intext:'application/json' inurl:api"
+            echo "intext:'application/xml' inurl:api|XML API|XML APIs|intext:'application/xml' inurl:api"
+            echo "inurl:wsdl|SOAP|SOAP WSDL|inurl:wsdl"
+            echo "inurl:odata|OData|OData endpoints|inurl:odata";;
+        34) echo "filetype:txt intext:CVE-202|CVE List|CVE files|filetype:txt intext:CVE-202"
+            echo "filetype:pdf intext:Nessus|Nessus Report|Nessus reports|filetype:pdf intext:Nessus"
+            echo "filetype:pdf intext:OpenVAS|OpenVAS Report|OpenVAS reports|filetype:pdf intext:OpenVAS"
+            echo "inurl:burp|Burp Suite|Burp Suite reports|inurl:burp"
+            echo "filetype:pdf intext:OWASP|OWASP|OWASP docs|filetype:pdf intext:OWASP"
+            echo "filetype:pdf intext:'penetration test'|Penetration Test|Pentest reports|filetype:pdf intext:'penetration test'"
+            echo "filetype:pdf intext:'vulnerability scan'|Vulnerability Scan|Vuln scans|filetype:pdf intext:'vulnerability scan'"
+            echo "filetype:pdf intext:'security audit'|Security Audit|Audit reports|filetype:pdf intext:'security audit'"
+            echo "filetype:txt intext:exploit|Exploit|Exploit code|filetype:txt intext:exploit"
+            echo "filetype:txt intext:'Proof of Concept'|Proof of Concept|PoC files|filetype:txt intext:'Proof of Concept'";;
+        35) echo "filetype:zip|ZIP Archive|ZIP files|filetype:zip"
+            echo "filetype:rar|RAR Archive|RAR files|filetype:rar"
+            echo "filetype:7z|7Z Archive|7Z files|filetype:7z"
+            echo "filetype:gz|GZ Archive|GZ files|filetype:gz"
+            echo "filetype:bz2|BZ2 Archive|BZ2 files|filetype:bz2"
+            echo "filetype:tar.gz|TAR.GZ Archive|TAR.GZ files|filetype:tar.gz"
+            echo "filetype:iso|ISO Image|ISO files|filetype:iso"
+            echo "filetype:img|IMG Image|IMG files|filetype:img";;
+        36) echo "filetype:apk|Android APK|Android apps|filetype:apk"
+            echo "filetype:ipa|iOS IPA|iOS apps|filetype:ipa"
+            echo "filetype:plist|iOS Plist|iOS configs|filetype:plist"
+            echo "filetype:xml intext:manifest|Android Manifest|Android config|filetype:xml intext:manifest"
+            echo "inurl:apple-app-site-association|Apple App Site|Apple association|inurl:apple-app-site-association"
+            echo "inurl:.well-known/assetlinks.json|Android Asset Links|Android links|inurl:.well-known/assetlinks.json"
+            echo "filetype:mobileconfig|Mobile Config|Mobile configs|filetype:mobileconfig"
+            echo "filetype:ps1|PowerShell Script|PowerShell|filetype:ps1";;
+        37) echo "filetype:java|Java Source|Java files|filetype:java"
+            echo "filetype:py|Python Source|Python files|filetype:py"
+            echo "filetype:js|JavaScript Source|JS files|filetype:js"
+            echo "filetype:ts|TypeScript Source|TS files|filetype:ts"
+            echo "filetype:go|Go Source|Go files|filetype:go"
+            echo "filetype:rs|Rust Source|Rust files|filetype:rs"
+            echo "filetype:swift|Swift Source|Swift files|filetype:swift"
+            echo "filetype:rb|Ruby Source|Ruby files|filetype:rb";;
+        38) echo "intitle:'Server Status'|Server Status|Server status pages|intitle:'Server Status'"
+            echo "intitle:'Apache Status'|Apache Status|Apache status|intitle:'Apache Status'"
+            echo "intitle:'Nginx Status'|Nginx Status|Nginx status|intitle:'Nginx Status'"
+            echo "inurl:server-status|Server Status URL|Server status|inurl:server-status"
+            echo "inurl:php-status|PHP Status|PHP status|inurl:php-status"
+            echo "inurl:/proc/meminfo|Memory Info|Memory info|inurl:/proc/meminfo"
+            echo "inurl:/proc/cpuinfo|CPU Info|CPU info|inurl:/proc/cpuinfo"
+            echo "inurl:/etc/passwd|Passwd File|Passwd file|inurl:/etc/passwd";;
+        39) echo "intitle:'Dashboard'|Dashboard|Dashboard pages|intitle:'Dashboard'"
+            echo "intitle:'Monitoring'|Monitoring|Monitoring pages|intitle:'Monitoring'"
+            echo "inurl:dashboard|Dashboard URL|Dashboard|inurl:dashboard"
+            echo "inurl:monitoring|Monitoring URL|Monitoring|inurl:monitoring"
+            echo "inurl:grafana|Grafana URL|Grafana|inurl:grafana"
+            echo "inurl:kibana|Kibana URL|Kibana|inurl:kibana"
+            echo "inurl:prometheus|Prometheus URL|Prometheus|inurl:prometheus"
+            echo "inurl:zabbix|Zabbix URL|Zabbix|inurl:zabbix";;
+        40) echo "inurl:smb|SMB Share|SMB shares|inurl:smb"
+            echo "inurl:nfs|NFS Share|NFS shares|inurl:nfs"
+            echo "inurl:nas|NAS Device|NAS devices|inurl:nas"
+            echo "intitle:'Network Share'|Network Share|Network shares|intitle:'Network Share'"
+            echo "inurl:shared|Shared Folder|Shared folders|inurl:shared"
+            echo "inurl:public|Public Share|Public shares|inurl:public"
+            echo "inurl:ftp|FTP Server|FTP servers|inurl:ftp"
+            echo "inurl:sftp|SFTP Server|SFTP servers|inurl:sftp";;
+        41) echo "filetype:pdf intext:'business plan'|Business Plan|Business plans|filetype:pdf intext:'business plan'"
+            echo "filetype:pdf intext:'financial report'|Financial Report|Financial reports|filetype:pdf intext:'financial report'"
+            echo "filetype:pdf intext:'annual report'|Annual Report|Annual reports|filetype:pdf intext:'annual report'"
+            echo "filetype:pdf intext:'corporate'|Corporate|Corporate docs|filetype:pdf intext:'corporate'"
+            echo "filetype:pdf intext:'strategy'|Strategy|Strategy docs|filetype:pdf intext:'strategy'"
+            echo "filetype:pdf intext:'presentation'|Presentation|Presentations|filetype:pdf intext:'presentation'"
+            echo "filetype:pdf intext:'organization'|Organization|Organization charts|filetype:pdf intext:'organization'"
+            echo "filetype:pdf intext:'memorandum'|Memorandum|Memorandum docs|filetype:pdf intext:'memorandum'";;
+        42) echo "filetype:pdf intext:'contract'|Contract|Contract documents|filetype:pdf intext:'contract'"
+            echo "filetype:pdf intext:'agreement'|Agreement|Agreement docs|filetype:pdf intext:'agreement'"
+            echo "filetype:pdf intext:'terms and conditions'|Terms and Conditions|T&C docs|filetype:pdf intext:'terms and conditions'"
+            echo "filetype:pdf intext:'privacy policy'|Privacy Policy|Privacy docs|filetype:pdf intext:'privacy policy'"
+            echo "filetype:pdf intext:'compliance'|Compliance|Compliance docs|filetype:pdf intext:'compliance'"
+            echo "filetype:pdf intext:'regulatory'|Regulatory|Regulatory docs|filetype:pdf intext:'regulatory'"
+            echo "filetype:pdf intext:'legal'|Legal|Legal docs|filetype:pdf intext:'legal'"
+            echo "filetype:pdf intext:'lawsuit'|Lawsuit|Lawsuit docs|filetype:pdf intext:'lawsuit'";;
+        43) echo "filetype:pdf intext:'construction'|Construction|Construction docs|filetype:pdf intext:'construction'"
+            echo "filetype:pdf intext:'engineering'|Engineering|Engineering docs|filetype:pdf intext:'engineering'"
+            echo "filetype:pdf intext:'blueprint'|Blueprint|Blueprints|filetype:pdf intext:'blueprint'"
+            echo "filetype:pdf intext:'floor plan'|Floor Plan|Floor plans|filetype:pdf intext:'floor plan'"
+            echo "filetype:pdf intext:'architect'|Architect|Architect docs|filetype:pdf intext:'architect'"
+            echo "filetype:pdf intext:'structural'|Structural|Structural docs|filetype:pdf intext:'structural'"
+            echo "filetype:pdf intext:'building'|Building|Building docs|filetype:pdf intext:'building'"
+            echo "filetype:pdf intext:'renovation'|Renovation|Renovation docs|filetype:pdf intext:'renovation'";;
+        44) echo "filetype:pdf intext:'car'|Car|Car docs|filetype:pdf intext:'car'"
+            echo "filetype:pdf intext:'automotive'|Automotive|Automotive docs|filetype:pdf intext:'automotive'"
+            echo "filetype:pdf intext:'vehicle'|Vehicle|Vehicle docs|filetype:pdf intext:'vehicle'"
+            echo "filetype:pdf intext:'owner manual'|Owner Manual|Owner manuals|filetype:pdf intext:'owner manual'"
+            echo "filetype:pdf intext:'service manual'|Service Manual|Service manuals|filetype:pdf intext:'service manual'"
+            echo "filetype:pdf intext:'repair'|Repair|Repair docs|filetype:pdf intext:'repair'"
+            echo "filetype:pdf intext:'engine'|Engine|Engine docs|filetype:pdf intext:'engine'"
+            echo "filetype:pdf intext:'transmission'|Transmission|Transmission docs|filetype:pdf intext:'transmission'";;
+        45) echo "filetype:pdf intext:'hotel'|Hotel|Hotel docs|filetype:pdf intext:'hotel'"
+            echo "filetype:pdf intext:'resort'|Resort|Resort docs|filetype:pdf intext:'resort'"
+            echo "filetype:pdf intext:'travel'|Travel|Travel docs|filetype:pdf intext:'travel'"
+            echo "filetype:pdf intext:'booking'|Booking|Booking docs|filetype:pdf intext:'booking'"
+            echo "filetype:pdf intext:'reservation'|Reservation|Reservation docs|filetype:pdf intext:'reservation'"
+            echo "filetype:pdf intext:'guest'|Guest|Guest docs|filetype:pdf intext:'guest'"
+            echo "filetype:pdf intext:'hospitality'|Hospitality|Hospitality docs|filetype:pdf intext:'hospitality'"
+            echo "filetype:pdf intext:'tourist'|Tourist|Tourist docs|filetype:pdf intext:'tourist'";;
+        46) echo "filetype:pdf intext:'game'|Game|Game docs|filetype:pdf intext:'game'"
+            echo "filetype:pdf intext:'gaming'|Gaming|Gaming docs|filetype:pdf intext:'gaming'"
+            echo "filetype:pdf intext:'entertainment'|Entertainment|Entertainment docs|filetype:pdf intext:'entertainment'"
+            echo "filetype:pdf intext:'esports'|Esports|Esports docs|filetype:pdf intext:'esports'"
+            echo "filetype:pdf intext:'playstation'|PlayStation|PlayStation docs|filetype:pdf intext:'playstation'"
+            echo "filetype:pdf intext:'xbox'|Xbox|Xbox docs|filetype:pdf intext:'xbox'"
+            echo "filetype:pdf intext:'nintendo'|Nintendo|Nintendo docs|filetype:pdf intext:'nintendo'"
+            echo "filetype:pdf intext:'steam'|Steam|Steam docs|filetype:pdf intext:'steam'";;
+        47) echo "filetype:pdf intext:'library'|Library|Library docs|filetype:pdf intext:'library'"
+            echo "filetype:pdf intext:'publishing'|Publishing|Publishing docs|filetype:pdf intext:'publishing'"
+            echo "filetype:pdf intext:'book'|Book|Book docs|filetype:pdf intext:'book'"
+            echo "filetype:pdf intext:'journal'|Journal|Journal docs|filetype:pdf intext:'journal'"
+            echo "filetype:pdf intext:'article'|Article|Article docs|filetype:pdf intext:'article'"
+            echo "filetype:pdf intext:'publication'|Publication|Publication docs|filetype:pdf intext:'publication'"
+            echo "filetype:pdf intext:'manuscript'|Manuscript|Manuscript docs|filetype:pdf intext:'manuscript'"
+            echo "filetype:pdf intext:'periodical'|Periodical|Periodical docs|filetype:pdf intext:'periodical'";;
+        48) echo "site:gov intext:'confidential'|Government|Government docs|site:gov intext:'confidential'"
+            echo "site:gov filetype:pdf|Gov PDF|Government PDFs|site:gov filetype:pdf"
+            echo "site:gov inurl:public|Public Records|Public records|site:gov inurl:public"
+            echo "site:gov intext:'security'|Security|Security docs|site:gov intext:'security'"
+            echo "site:gov intext:'defense'|Defense|Defense docs|site:gov intext:'defense'"
+            echo "site:gov intext:'policy'|Policy|Policy docs|site:gov intext:'policy'"
+            echo "site:gov intext:'regulation'|Regulation|Regulation docs|site:gov intext:'regulation'"
+            echo "site:gov intext:'report'|Report|Government reports|site:gov intext:'report'";;
+        49) echo "filetype:pdf intext:'agriculture'|Agriculture|Agriculture docs|filetype:pdf intext:'agriculture'"
+            echo "filetype:pdf intext:'farming'|Farming|Farming docs|filetype:pdf intext:'farming'"
+            echo "filetype:pdf intext:'environment'|Environment|Environment docs|filetype:pdf intext:'environment'"
+            echo "filetype:pdf intext:'climate'|Climate|Climate docs|filetype:pdf intext:'climate'"
+            echo "filetype:pdf intext:'sustainability'|Sustainability|Sustainability docs|filetype:pdf intext:'sustainability'"
+            echo "filetype:pdf intext:'crop'|Crop|Crop docs|filetype:pdf intext:'crop'"
+            echo "filetype:pdf intext:'livestock'|Livestock|Livestock docs|filetype:pdf intext:'livestock'"
+            echo "filetype:pdf intext:'irrigation'|Irrigation|Irrigation docs|filetype:pdf intext:'irrigation'";;
+        50) echo "filetype:pdf intext:'pharmaceutical'|Pharmaceutical|Pharmaceutical docs|filetype:pdf intext:'pharmaceutical'"
+            echo "filetype:pdf intext:'drug'|Drug|Drug docs|filetype:pdf intext:'drug'"
+            echo "filetype:pdf intext:'medicine'|Medicine|Medicine docs|filetype:pdf intext:'medicine'"
+            echo "filetype:pdf intext:'clinical trial'|Clinical Trial|Clinical trial docs|filetype:pdf intext:'clinical trial'"
+            echo "filetype:pdf intext:'prescription'|Prescription|Prescription docs|filetype:pdf intext:'prescription'"
+            echo "filetype:pdf intext:'pharmacy'|Pharmacy|Pharmacy docs|filetype:pdf intext:'pharmacy'"
+            echo "filetype:pdf intext:'vaccine'|Vaccine|Vaccine docs|filetype:pdf intext:'vaccine'"
+            echo "filetype:pdf intext:'dosage'|Dosage|Dosage docs|filetype:pdf intext:'dosage'";;
+        51) echo "filetype:pdf intext:'science'|Science|Science docs|filetype:pdf intext:'science'"
+            echo "filetype:pdf intext:'research'|Research|Research docs|filetype:pdf intext:'research'"
+            echo "filetype:pdf intext:'experiment'|Experiment|Experiment docs|filetype:pdf intext:'experiment'"
+            echo "filetype:pdf intext:'laboratory'|Laboratory|Lab docs|filetype:pdf intext:'laboratory'"
+            echo "filetype:pdf intext:'physics'|Physics|Physics docs|filetype:pdf intext:'physics'"
+            echo "filetype:pdf intext:'chemistry'|Chemistry|Chemistry docs|filetype:pdf intext:'chemistry'"
+            echo "filetype:pdf intext:'biology'|Biology|Biology docs|filetype:pdf intext:'biology'"
+            echo "filetype:pdf intext:'astronomy'|Astronomy|Astronomy docs|filetype:pdf intext:'astronomy'";;
+        52) echo "filetype:pdf intext:'real estate'|Real Estate|Real estate docs|filetype:pdf intext:'real estate'"
+            echo "filetype:pdf intext:'property'|Property|Property docs|filetype:pdf intext:'property'"
+            echo "filetype:pdf intext:'rental'|Rental|Rental docs|filetype:pdf intext:'rental'"
+            echo "filetype:pdf intext:'mortgage'|Mortgage|Mortgage docs|filetype:pdf intext:'mortgage'"
+            echo "filetype:pdf intext:'appraisal'|Appraisal|Appraisal docs|filetype:pdf intext:'appraisal'"
+            echo "filetype:pdf intext:'listing'|Listing|Property listings|filetype:pdf intext:'listing'"
+            echo "filetype:pdf intext:'broker'|Broker|Broker docs|filetype:pdf intext:'broker'"
+            echo "filetype:pdf intext:'lease'|Lease|Lease docs|filetype:pdf intext:'lease'";;
     esac
 }
 
@@ -422,7 +650,7 @@ browse_categories() {
         
         [ "$CAT_CHOICE" = "0" ] && break
         
-        if [ "$CAT_CHOICE" -ge 1 ] && [ "$CAT_CHOICE" -le 28 ] 2>/dev/null; then
+        if [ "$CAT_CHOICE" -ge 1 ] && [ "$CAT_CHOICE" -le 52 ] 2>/dev/null; then
             view_dorks "$CAT_CHOICE"
         else
             echo -e "\033[31;1mInvalid selection!\033[0m"
@@ -438,7 +666,7 @@ view_dorks() {
     
     while true; do
         clear
-        CAT_NAMES=("PDF Documents" "Excel & Spreadsheets" "Word Documents" "Database Files" "Log Files" "Backup Files" "Admin Panels" "Login Pages" "phpMyAdmin" "cPanel & WHM" "Open Directories" "Upload Directories" "Config Directories" "Passwords" "API Keys" "Config Files" "IoT & Camera Feeds" "Public Analytics & Stats" "Git & Version Control" "Geo-location & Maps" "Network Devices" "VPN & Proxy Configs" "Email & Communication" "E-commerce" "Healthcare & Medical" "File Sharing" "Education & Academic" "Developer & Debugging")
+        CAT_NAMES=("PDF Documents" "Excel & Spreadsheets" "Word Documents" "Database Files" "Log Files" "Backup Files" "Admin Panels" "Login Pages" "phpMyAdmin" "cPanel & WHM" "Open Directories" "Upload Directories" "Config Directories" "Passwords" "API Keys" "Config Files" "IoT & Camera Feeds" "Public Analytics & Stats" "Git & Version Control" "Geo-location & Maps" "Network Devices" "VPN & Proxy Configs" "Email & Communication" "E-commerce" "Healthcare & Medical" "File Sharing & Cloud Storage" "Education & Academic" "SCADA & Industrial Control" "News & Media" "Developer & Debugging" "OSINT & People Search" "Financial & Banking" "API Endpoints & Swagger" "Security & Vulnerability" "Archives & Compressed Files" "Mobile Apps & Configs" "Source Code & Repositories" "Server Status Pages" "Dashboard & Monitoring" "Network Shares & NAS" "Corporate & Business" "Legal & Compliance" "Construction & Engineering" "Automotive & Vehicles" "Hospitality & Travel" "Gaming & Entertainment" "Libraries & Publishing" "Government & Public Sector" "Agriculture & Environment" "Pharmaceuticals & Drugs" "Science & Research" "Real Estate & Property")
         CATEGORY_NAME="${CAT_NAMES[$((CAT_NUM-1))]}"
         
         echo -e "\033[35;1m📂 CATEGORY: $CATEGORY_NAME\033[0m"
@@ -500,13 +728,13 @@ search_dorks() {
     read KEYWORD
     
     RESULTS=""
-    for CAT in $(seq 1 28); do
+    for CAT in $(seq 1 52); do
         DORKS=$(get_dorks_by_category $CAT)
         IFS=$'\n'
         for DORK in $DORKS; do
             IFS='|' read -r Q N D E <<< "$DORK"
             if echo "$N $Q $D" | grep -iq "$KEYWORD"; then
-                CAT_NAMES=("PDF Documents" "Excel & Spreadsheets" "Word Documents" "Database Files" "Log Files" "Backup Files" "Admin Panels" "Login Pages" "phpMyAdmin" "cPanel & WHM" "Open Directories" "Upload Directories" "Config Directories" "Passwords" "API Keys" "Config Files" "IoT & Camera Feeds" "Public Analytics & Stats" "Git & Version Control" "Geo-location & Maps" "Network Devices" "VPN & Proxy Configs" "Email & Communication" "E-commerce" "Healthcare & Medical" "File Sharing" "Education & Academic" "Developer & Debugging")
+                CAT_NAMES=("PDF Documents" "Excel & Spreadsheets" "Word Documents" "Database Files" "Log Files" "Backup Files" "Admin Panels" "Login Pages" "phpMyAdmin" "cPanel & WHM" "Open Directories" "Upload Directories" "Config Directories" "Passwords" "API Keys" "Config Files" "IoT & Camera Feeds" "Public Analytics & Stats" "Git & Version Control" "Geo-location & Maps" "Network Devices" "VPN & Proxy Configs" "Email & Communication" "E-commerce" "Healthcare & Medical" "File Sharing & Cloud Storage" "Education & Academic" "SCADA & Industrial Control" "News & Media" "Developer & Debugging" "OSINT & People Search" "Financial & Banking" "API Endpoints & Swagger" "Security & Vulnerability" "Archives & Compressed Files" "Mobile Apps & Configs" "Source Code & Repositories" "Server Status Pages" "Dashboard & Monitoring" "Network Shares & NAS" "Corporate & Business" "Legal & Compliance" "Construction & Engineering" "Automotive & Vehicles" "Hospitality & Travel" "Gaming & Entertainment" "Libraries & Publishing" "Government & Public Sector" "Agriculture & Environment" "Pharmaceuticals & Drugs" "Science & Research" "Real Estate & Property")
                 RESULTS="$RESULTS${CAT_NAMES[$((CAT-1))]}|$N|$Q|$D|$E\n"
             fi
         done
@@ -675,7 +903,7 @@ main_menu() {
         echo -e "\033[37;1m0. ❌ Exit\033[0m"
         echo "────────────────────────────────────────────────────────────────────────────────"
         
-        echo -n -e "\033[34;1mSelect an option: \033[0m"
+        echo -n -e "\n\033[34;1mSelect an option: \033[0m"
         read MAIN_CHOICE
         
         case $MAIN_CHOICE in
