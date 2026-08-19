@@ -1,5 +1,3 @@
-# "dork.sh" Lite Version
-
 DATABASE="mr_dork.db"
 
 init_db() {
@@ -33,7 +31,7 @@ print_logo() {
     echo -e "\033[36;1m"
     echo '         _nnnn_                      '
     echo '        dGGGGMMb     ,""""""""""""""".'
-    echo '       @p~qp~~qMb    | I Love Tc4dy <3 |'
+    echo '       @p~qp~~qMb    | I Love Tc4dy [<3] |'
     echo '       M|@||@) M|   _;..............'
     echo '       @,----.JM| -'
     echo '      JS^\__/  qKL'
@@ -49,7 +47,7 @@ print_logo() {
     echo '     `-'"'"'       `--'"'"''
     echo -e "\033[0m"
     echo -e "\033[36;1m"
-    echo "══════════════════════════════════════════════════════════════════════════════"
+    echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
     echo "                            MR. DORK                               "
     echo "            The Advanced Dork Search Engine for Analysts          "
     echo "                                                                              "
@@ -57,10 +55,10 @@ print_logo() {
     echo "                                            "
     echo "  Total Dorks: 448  Google Dorks                                        "
     echo "  Categories: 28                                                         "
-    echo "══════════════════════════════════════════════════════════════════════════════"
+    echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
     echo -e "\033[0m"
-    echo -e "\033[33;1m⚠️  ETHICAL USE WARNING: This tool is for educational and legal testing only!\033[0m"
-    echo -e "\033[31;1m⚠️  Unauthorized system access is illegal and can have serious consequences!\033[0m"
+    echo -e "\033[33;1m[!] ETHICAL USE WARNING: This tool is for educational and legal testing only!\033[0m"
+    echo -e "\033[31;1m[!] Unauthorized system access is illegal and can have serious consequences!\033[0m"
     echo ""
 }
 
@@ -250,26 +248,26 @@ browse_categories() {
         print_logo
         update_stats
         stats=$(sqlite3 "$DATABASE" "SELECT total_searches, fav_count FROM stats WHERE id=1;" 2>/dev/null)
-        echo -e "\033[32;1m📊 Total Searches: $(echo $stats | cut -d'|' -f1) | Favorites: $(echo $stats | cut -d'|' -f2)\033[0m"
-        echo "────────────────────────────────────────────────────────────────────────────────"
-        echo -e "\033[35;1m📂 CATEGORIES\033[0m"
+        echo -e "\033[32;1m[+] STATS: Total Searches: $(echo $stats | cut -d'|' -f1) | Favorites: $(echo $stats | cut -d'|' -f2)\033[0m"
+        echo "[-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]"
+        echo -e "\033[35;1m[*] CATEGORIES\033[0m"
         echo ""
-        echo "1.  📁 PDF Documents"
-        echo "2.  📊 Excel & Spreadsheets"
-        echo "3.  📝 Word Documents"
-        echo "4.  💾 Database Files"
-        echo "5.  📜 Log Files"
-        echo "6.  💼 Backup Files"
-        echo "7.  🔐 Admin Panels"
-        echo "8.  🔑 Login Pages"
-        echo "9.  🗄️ phpMyAdmin"
-        echo "10. ⚙️ cPanel & WHM"
-        echo "11. 📂 Open Directories"
-        echo "12. 📤 Upload Directories"
-        echo "13. ⚙️ Config Directories"
-        echo "14. 🔑 Passwords"
-        echo "15. 🔐 API Keys"
-        echo "16. 📋 Config Files"
+        echo "1.  [*] PDF Documents"
+        echo "2.  [&] Excel & Spreadsheets"
+        echo "3.  [#] Word Documents"
+        echo "4.  [$] Database Files"
+        echo "5.  [+] Log Files"
+        echo "6.  [%] Backup Files"
+        echo "7.  [!] Admin Panels"
+        echo "8.  [@] Login Pages"
+        echo "9.  [?] phpMyAdmin"
+        echo "10. [>] cPanel & WHM"
+        echo "11. [<] Open Directories"
+        echo "12. [/] Upload Directories"
+        echo "13. [=] Config Directories"
+        echo "14. [#] Passwords"
+        echo "15. [$] API Keys"
+        echo "16. [&] Config Files"
         echo "0.  Back to Main Menu"
         echo ""
         echo -n -e "\033[34;1mSelect category: \033[0m"
@@ -293,8 +291,8 @@ view_dorks() {
     
     while true; do
         print_logo
-        echo -e "\033[35;1m📂 CATEGORY: $cat_name\033[0m"
-        echo "══════════════════════════════════════════════════════════════════════════════"
+        echo -e "\033[35;1m[*] CATEGORY: $cat_name\033[0m"
+        echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
         
         idx=1
         IFS=$'\n'
@@ -303,11 +301,11 @@ view_dorks() {
             echo -e "\033[32;1m$idx. $name\033[0m"
             echo "   \033[34;1mDescription: $desc\033[0m"
             echo "   \033[36;1mDork: $query\033[0m"
-            echo "----------------------------------------"
+            echo "[-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]"
             idx=$((idx+1))
         done
         
-        echo -e "\033[33;1m⚡ Type 'all' to run every dork in this category\033[0m"
+        echo -e "\033[33;1m[!] Type 'all' to run every dork in this category\033[0m"
         echo -e "\033[37;1m0. Back\033[0m"
         echo -n -e "\n\033[34;1mSelect dork number, 'all', or 0: \033[0m"
         read dork_choice
@@ -334,7 +332,7 @@ view_dorks() {
                     sleep 0.5
                 done
                 update_stats
-                echo -e "\033[32;1m✅ All $dork_count dorks executed!\033[0m"
+                echo -e "\033[32;1m[+] All $dork_count dorks executed!\033[0m"
                 echo -n -e "\033[34;1mPress Enter to continue...\033[0m"
                 read
             fi
@@ -354,8 +352,8 @@ execute_dork() {
     category=$5
     
     print_logo
-    echo -e "\033[35;1m🚀 EXECUTING: $name\033[0m"
-    echo "══════════════════════════════════════════════════════════════════════════════"
+    echo -e "\033[35;1m[+] EXECUTING: $name\033[0m"
+    echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
     echo -e "\033[34;1mDescription: $desc\033[0m"
     echo -e "\033[34;1mExample usage: $example\033[0m"
     echo ""
@@ -370,8 +368,8 @@ execute_dork() {
     url="https://www.google.com/search?q=$encoded"
     
     echo ""
-    echo -e "\033[37;1m1. 🌐 Open in Browser\033[0m"
-    echo -e "\033[37;1m2. ⭐ Save to Favorites\033[0m"
+    echo -e "\033[37;1m1. [*] Open in Browser\033[0m"
+    echo -e "\033[37;1m2. [$] Save to Favorites\033[0m"
     echo -e "\033[37;1m0. Cancel\033[0m"
     echo -n -e "\n\033[34;1mSelection: \033[0m"
     read choice
@@ -381,13 +379,13 @@ execute_dork() {
             open_url "$url"
             sqlite3 "$DATABASE" "INSERT INTO history (query, category, date) VALUES ('$final_query', '$category', datetime('now'));" 2>/dev/null
             update_stats
-            echo -e "\033[32;1m✓ Opened in browser!\033[0m"
+            echo -e "\033[32;1m[+] Opened in browser!\033[0m"
             sleep 1
             ;;
         2)
             sqlite3 "$DATABASE" "INSERT INTO favorites (category, name, query, example, description, date) VALUES ('$category', '$name', '$final_query', '$example', '$desc', datetime('now'));" 2>/dev/null
             update_stats
-            echo -e "\033[32;1m✓ Saved to favorites!\033[0m"
+            echo -e "\033[32;1m[+] Saved to favorites!\033[0m"
             sleep 1
             ;;
     esac
@@ -396,8 +394,8 @@ execute_dork() {
 view_favorites() {
     while true; do
         print_logo
-        echo -e "\033[35;1m⭐ FAVORITE DORKS\033[0m"
-        echo "══════════════════════════════════════════════════════════════════════════════"
+        echo -e "\033[35;1m[$] FAVORITE DORKS\033[0m"
+        echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
         
         favs=$(sqlite3 "$DATABASE" "SELECT id, category, name, query FROM favorites ORDER BY date DESC;" 2>/dev/null)
         
@@ -437,7 +435,7 @@ view_favorites() {
             open_url "https://www.google.com/search?q=$encoded"
             sqlite3 "$DATABASE" "INSERT INTO history (query, category, date) VALUES ('$query', '$category', datetime('now'));" 2>/dev/null
             update_stats
-            echo -e "\033[32;1m✓ Opened in browser!\033[0m"
+            echo -e "\033[32;1m[+] Opened in browser!\033[0m"
             sleep 1
         fi
     done
@@ -445,8 +443,8 @@ view_favorites() {
 
 view_history() {
     print_logo
-    echo -e "\033[35;1m📜 SEARCH HISTORY\033[0m"
-    echo "══════════════════════════════════════════════════════════════════════════════"
+    echo -e "\033[35;1m[&] SEARCH HISTORY\033[0m"
+    echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
     
     history=$(sqlite3 "$DATABASE" "SELECT query, category, date FROM history ORDER BY date DESC LIMIT 50;" 2>/dev/null)
     
@@ -462,7 +460,7 @@ view_history() {
         done
     fi
     
-    echo "══════════════════════════════════════════════════════════════════════════════"
+    echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
     echo -e "\033[37;1m1. Clear History\033[0m"
     echo -e "\033[37;1m0. Back\033[0m"
     echo -n -e "\n\033[34;1mSelection: \033[0m"
@@ -479,11 +477,11 @@ view_history() {
 custom_dorks_menu() {
     while true; do
         print_logo
-        echo -e "\033[35;1m🛠️ CUSTOM DORKS\033[0m"
-        echo "══════════════════════════════════════════════════════════════════════════════"
-        echo -e "\033[37;1m1. ➕ Add Custom Dork\033[0m"
-        echo -e "\033[37;1m2. 📂 View Custom Dorks\033[0m"
-        echo -e "\033[37;1m3. 🗑️ Delete Custom Dork\033[0m"
+        echo -e "\033[35;1m[%] CUSTOM DORKS\033[0m"
+        echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
+        echo -e "\033[37;1m1. [+] Add Custom Dork\033[0m"
+        echo -e "\033[37;1m2. [*] View Custom Dorks\033[0m"
+        echo -e "\033[37;1m3. [-] Delete Custom Dork\033[0m"
         echo -e "\033[37;1m0. Back\033[0m"
         echo ""
         echo -n -e "\033[34;1mSelection: \033[0m"
@@ -499,13 +497,13 @@ custom_dorks_menu() {
                 echo -n -e "\033[33;1mDescription: \033[0m"
                 read desc
                 sqlite3 "$DATABASE" "INSERT INTO custom (name, query, description, date) VALUES ('$name', '$query', '$desc', datetime('now'));" 2>/dev/null
-                echo -e "\033[32;1m✓ Custom dork saved!\033[0m"
+                echo -e "\033[32;1m[+] Custom dork saved!\033[0m"
                 sleep 1
                 ;;
             2)
                 print_logo
-                echo -e "\033[35;1m📂 YOUR CUSTOM DORKS\033[0m"
-                echo "══════════════════════════════════════════════════════════════════════════════"
+                echo -e "\033[35;1m[*] YOUR CUSTOM DORKS\033[0m"
+                echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
                 customs=$(sqlite3 "$DATABASE" "SELECT id, name, query, description, date FROM custom ORDER BY date DESC;" 2>/dev/null)
                 if [ -z "$customs" ]; then
                     echo -e "\033[31;1mNo custom dorks found.\033[0m"
@@ -536,8 +534,8 @@ custom_dorks_menu() {
 
 search_global() {
     print_logo
-    echo -e "\033[35;1m🔍 GLOBAL SEARCH\033[0m"
-    echo "══════════════════════════════════════════════════════════════════════════════"
+    echo -e "\033[35;1m[?] GLOBAL SEARCH\033[0m"
+    echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
     echo -n -e "\033[34;1mEnter search term: \033[0m"
     read keyword
     
@@ -575,8 +573,8 @@ search_global() {
     
     while true; do
         print_logo
-        echo -e "\033[35;1m🔎 SEARCH RESULTS for '$keyword'\033[0m"
-        echo "══════════════════════════════════════════════════════════════════════════════"
+        echo -e "\033[35;1m[?] SEARCH RESULTS for '$keyword'\033[0m"
+        echo "[*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*][*]"
         
         idx=1
         IFS=$'\n'
@@ -608,15 +606,15 @@ main_menu() {
         print_logo
         update_stats
         stats=$(sqlite3 "$DATABASE" "SELECT total_searches, fav_count FROM stats WHERE id=1;" 2>/dev/null)
-        echo -e "\033[32;1m📊 STATS: Total Searches: $(echo $stats | cut -d'|' -f1) | Favorites: $(echo $stats | cut -d'|' -f2)\033[0m"
-        echo "────────────────────────────────────────────────────────────────────────────────"
-        echo -e "\033[37;1m1. 📂 Browse Categories\033[0m"
-        echo -e "\033[37;1m2. 🔍 Search Dorks\033[0m"
-        echo -e "\033[37;1m3. ⭐ View Favorites\033[0m"
-        echo -e "\033[37;1m4. 📜 Search History\033[0m"
-        echo -e "\033[37;1m5. 🛠️ Custom Dorks\033[0m"
-        echo -e "\033[37;1m0. ❌ Exit\033[0m"
-        echo "────────────────────────────────────────────────────────────────────────────────"
+        echo -e "\033[32;1m[+] STATS: Total Searches: $(echo $stats | cut -d'|' -f1) | Favorites: $(echo $stats | cut -d'|' -f2)\033[0m"
+        echo "[-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]"
+        echo -e "\033[37;1m1. [*] Browse Categories\033[0m"
+        echo -e "\033[37;1m2. [?] Search Dorks\033[0m"
+        echo -e "\033[37;1m3. [$] View Favorites\033[0m"
+        echo -e "\033[37;1m4. [&] Search History\033[0m"
+        echo -e "\033[37;1m5. [%] Custom Dorks\033[0m"
+        echo -e "\033[37;1m0. [!] Exit\033[0m"
+        echo "[-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]"
         echo -n -e "\033[34;1mSelect an option: \033[0m"
         read choice
         
