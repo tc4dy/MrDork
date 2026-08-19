@@ -2,7 +2,7 @@
 
 **MR. DORK** - Advanced Google Dork Search Engine for Security Analysts
 
-`448+ dorks` | `28 categories` | `Python` + `Bash`
+`302+ dorks` | `28 categories` | `Python` + `Bash`
 
 ---
 
