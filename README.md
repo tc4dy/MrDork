@@ -30,10 +30,6 @@ Bash (.sh) Version
 ```bash
 bash dork.sh
 ```
-Or Lite Version (Not recommended)
-```bash
-bash dork_lite.sh
-```
 
 Requirements
 
