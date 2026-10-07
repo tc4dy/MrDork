@@ -1,4 +1,4 @@
-# MrDork 🎯
+# MrDork 
 
 **MR. DORK** - Advanced Google Dork Search Engine for Security Analysts
 
@@ -8,12 +8,12 @@
 
 ## Features
 
-- 📁 SQLite database for favorites, history & statistics
-- 🔍 Global search across all dorks
-- ⭐ Save & manage favorite dorks
-- 🛠️ Create custom dorks
-- 📜 Search history tracking
-- ⚡ Run all dorks in a category sequentially
+-  SQLite database for favorites, history & statistics
+-  Global search across all dorks
+-  Save & manage favorite dorks
+-  Create custom dorks
+-  Search history tracking
+-  Run all dorks in a category sequentially
 
 ## Categories
 
